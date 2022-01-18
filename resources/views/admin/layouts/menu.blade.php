@@ -83,3 +83,28 @@
         <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
     </div>
 </li>
+<!-- User Account: style can be found in dropdown.less -->
+<li class="dropdown user user-menu">
+    <a class="nav-link nav-pill user-avatar" data-toggle="dropdown" href="#" role="button"
+       aria-haspopup="true" aria-expanded="false">
+        <img src="{{ url('/') }}/design/admin/dist/img/user2-160x160.jpg" class="img-circle user-image elevation-2" alt="User Image">
+    </a>
+    <ul class="dropdown-menu">
+        <!-- Menu Footer-->
+        <li class="user-footer">
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#"><i class="text-secondary ti-reload"></i>Activity</a>
+            <a class="dropdown-item" href="#"><i class="text-success ti-email"></i>Messages</a>
+            <a class="dropdown-item" href="#"><i class="text-warning ti-user"></i>Profile</a>
+            <a class="dropdown-item" href="#"><i class="text-dark ti-layers-alt"></i>Projects <span
+                    class="badge badge-info">6</span> </a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href=""><i class="text-info ti-settings"></i>Settings</a>
+            <form method="GET" action="{{ url('admin/logout') }}">
+                @csrf
+                <a class="dropdown-item" href="{{ url('admin/logout') }}" onclick="event.preventDefault();this.closest('form').submit();">
+                    <i class="text-danger ti-unlock"></i>{{ __('navbar.logout') }}</a>
+            </form>
+        </li>
+    </ul>
+</li>

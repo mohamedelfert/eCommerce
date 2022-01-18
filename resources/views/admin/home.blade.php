@@ -1,5 +1,6 @@
 @extends('admin.index')
 @section('content')
+
     <div class="container-fluid">
         <!-- Small boxes (Stat box) -->
         <div class="row">
@@ -579,6 +580,5 @@
         </div>
         <!-- /.row (main row) -->
     </div><!-- /.container-fluid -->
-
 
 @endsection
