@@ -102,7 +102,7 @@
             <a class="dropdown-item" href=""><i class="text-info ti-settings"></i>Settings</a>
             <form method="GET" action="{{ url('admin/logout') }}">
                 @csrf
-                <a class="dropdown-item" href="{{ url('admin/logout') }}" onclick="event.preventDefault();this.closest('form').submit();">
+                <a class="dropdown-item" href="{{ adminUrl('logout') }}" onclick="event.preventDefault();this.closest('form').submit();">
                     <i class="text-danger ti-unlock"></i>{{ __('navbar.logout') }}</a>
             </form>
         </li>
