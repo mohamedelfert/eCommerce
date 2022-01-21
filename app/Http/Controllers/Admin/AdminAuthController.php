@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 
-class AdminController extends Controller
+class AdminAuthController extends Controller
 {
     public function login()
     {

@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>{{ trans('navbar.title') }}</title>
+        <title>{{ !empty($title) ? $title : trans('navbar.title') }}</title>
         <!-- Google Font: Source Sans Pro -->
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
         <!-- Font Awesome -->
@@ -16,6 +16,7 @@
         <link rel="stylesheet" href="{{ url('/') }}/design/admin/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
         <!-- JQVMap -->
         <link rel="stylesheet" href="{{ url('/') }}/design/admin/plugins/jqvmap/jqvmap.min.css">
+        <link rel="stylesheet" href="{{ url('/design/admin/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
         <!-- Theme style -->
         <link rel="stylesheet" href="{{ url('/') }}/design/admin/dist/css/adminlte.min.css">
         <!-- overlayScrollbars -->

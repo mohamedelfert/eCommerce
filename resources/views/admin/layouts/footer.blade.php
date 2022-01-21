@@ -14,9 +14,11 @@
         <!-- ./wrapper -->
 
         <!-- jQuery -->
-        <script src="{{ url('/') }}/design/admin/plugins/jquery/jquery.min.js"></script>
+        <script src="{{ url('/design/admin/plugins/jquery/jquery.min.js') }}"></script>
+        <script src="{{ url('/design/admin/plugins/datatables/jquery.dataTables.min.js') }}"></script>
+        <script src="{{ url('/design/admin/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
         <!-- jQuery UI 1.11.4 -->
-        <script src="{{ url('/') }}/design/admin/plugins/jquery-ui/jquery-ui.min.js"></script>
+        <script src="{{ url('/design/admin/plugins/jquery-ui/jquery-ui.min.js') }}"></script>
         <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
         <script>
             $.widget.bridge('uibutton', $.ui.button)
@@ -47,5 +49,8 @@
         <script src="{{ url('/design/admin/dist/js/demo.js') }}"></script>
         <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
         <script src="{{ url('/design/admin/dist/js/pages/dashboard.js') }}"></script>
+
+        @stack('js')
+        @stack('css')
     </body>
 </html>
