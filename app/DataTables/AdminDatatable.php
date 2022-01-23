@@ -21,7 +21,9 @@ class AdminDatatable extends DataTable
     {
         return datatables()
             ->eloquent($query)
-            ->addColumn('action', 'admindatatable.action');
+            ->addColumn('edit', 'admin.admins.btn.edit')
+            ->addColumn('delete', 'admin.admins.btn.delete')
+            ->rawColumns(['edit','delete']);
     }
 
     /**
@@ -46,15 +48,35 @@ class AdminDatatable extends DataTable
                     ->setTableId('admindatatable-table')
                     ->columns($this->getColumns())
                     ->minifiedAjax()
-                    ->dom('Bfrtip')
+                    ->dom('Blfrtip')
                     ->orderBy(1)
-                    ->buttons(
-                        Button::make('create'),
-                        Button::make('export'),
-                        Button::make('print'),
-                        Button::make('reset'),
-                        Button::make('reload')
-                    );
+//                    ->buttons(
+//                        Button::make('create'),
+//                        Button::make('export'),
+//                        Button::make('print'),
+//                        Button::make('reset'),
+//                        Button::make('reload')
+//                    )
+//                    ->buttons(
+//                        Button::make(['extend' => 'create', 'className' => 'btn btn-success', 'text' => '<i class="fa fa-plus"> New Admin </i>']),
+//                        Button::make([
+//                            ['extend' => 'csv', 'className' => 'btn btn-info', 'text' => '<i class="fa fa-file"> Export CSV </i>'],
+//                            ['extend' => 'excel', 'className' => 'btn btn-secondary', 'text' => '<i class="fa fa-file-excel"> Export Excel </i>'],
+//                        ]),
+//                        Button::make(['extend' => 'print', 'className' => 'btn btn-primary', 'text' => '<i class="fa fa-print"> Print </i>']),
+//                        Button::make(['extend' => 'reset', 'className' => 'btn btn-warning', 'text' => '<i class="fa fa-undo"> Reset </i>']),
+//                        Button::make(['extend' => 'reload', 'className' => 'btn btn-default', 'text' => '<i class="fa fa-retweet"> Reload </i>'])
+//                    )
+                    ->parameters([
+                        'buttons'    => [
+                            ['extend' => 'create', 'className' => 'btn btn-success', 'text' => '<i class="fa fa-plus"> New Admin </i>'],
+                            ['extend' => 'print', 'className' => 'btn btn-primary', 'text' => '<i class="fa fa-print"> Print </i>'],
+                            ['extend' => 'csv', 'className' => 'btn btn-info', 'text' => '<i class="fa fa-file"> Export CSV </i>'],
+                            ['extend' => 'excel', 'className' => 'btn btn-secondary', 'text' => '<i class="fa fa-file-excel"> Export Excel </i>'],
+                            ['extend' => 'reset', 'className' => 'btn btn-warning', 'text' => '<i class="fa fa-undo"> Reset </i>'],
+                            ['extend' => 'reload', 'className' => 'btn btn-default', 'text' => '<i class="fa fa-retweet"> Reload </i>'],
+                        ],
+                    ]);
     }
 
     /**
@@ -64,15 +86,40 @@ class AdminDatatable extends DataTable
      */
     protected function getColumns()
     {
+//        return [
+//            Column::make('id'),
+//            Column::make('name'),
+//            Column::make('email'),
+//            Column::make('created_at'),
+//            Column::make('updated_at'),
+//            Column::computed('edit')
+//                ->exportable(false)
+//                ->printable(false)
+//                ->width(60)
+//                ->addClass('text-center'),
+//            Column::computed('delete')
+//                ->exportable(false)
+//                ->printable(false)
+//                ->width(60)
+//                ->addClass('text-center'),
+//        ];
+        // or
         return [
-            Column::make('id'),
-            Column::make('name'),
-            Column::make('email'),
-            Column::make('created_at'),
-            Column::make('updated_at'),
-            Column::computed('action')
+            Column::computed('id','ID')->addClass('text-center'),
+            Column::computed('name','Admin Name')->addClass('text-center'),
+            Column::computed('email','Admin Email')->addClass('text-center'),
+            Column::computed('created_at','Created At')->addClass('text-center'),
+            Column::computed('updated_at','Updated At')->addClass('text-center'),
+            Column::computed('edit' ,'Edit')
                 ->exportable(false)
-                ->printable(false),
+                ->printable(false)
+                ->width(60)
+                ->addClass('text-center'),
+            Column::computed('delete','Delete')
+                ->exportable(false)
+                ->printable(false)
+                ->width(60)
+                ->addClass('text-center'),
         ];
     }
 

@@ -1,8 +1,8 @@
             <footer class="main-footer">
-                <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong>
+                <strong>Copyright &copy; 2021-2022 <a href="#">E-Commerce System</a>.</strong>
                 All rights reserved.
                 <div class="float-right d-none d-sm-inline-block">
-                    <b>Version</b> 3.2.0-rc
+                    <b>Version</b> 1.0.0
                 </div>
             </footer>
             <!-- Control Sidebar -->
@@ -17,6 +17,9 @@
         <script src="{{ url('/design/admin/plugins/jquery/jquery.min.js') }}"></script>
         <script src="{{ url('/design/admin/plugins/datatables/jquery.dataTables.min.js') }}"></script>
         <script src="{{ url('/design/admin/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
+        <script src="{{ url('/design/admin/plugins/datatables-buttons/js/buttons.bootstrap4.min.js') }}"></script>
+        <script src="{{ url('/design/admin/plugins/datatables-buttons/js/dataTables.buttons.min.js') }}"></script>
+        <script src="{{ url('/vendor/datatables/buttons.server-side.js') }}"></script>
         <!-- jQuery UI 1.11.4 -->
         <script src="{{ url('/design/admin/plugins/jquery-ui/jquery-ui.min.js') }}"></script>
         <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
