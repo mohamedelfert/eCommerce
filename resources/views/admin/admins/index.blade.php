@@ -7,7 +7,7 @@
         </div>
         <!-- /.card-header -->
         <div class="card-body">
-            {!! $dataTable->table(['class' => 'dataTable table table-striped table-bordered table-hover']) !!}
+            {!! $dataTable->table(['class' => 'dataTable table table-striped table-bordered table-hover'],true) !!}
         </div>
     </div>
 
