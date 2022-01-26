@@ -2,11 +2,13 @@
 return [
     'login' => 'Login',
     'admin_panel' => 'Admin Panel',
+    'admins_control' => 'Admins Control',
     'incorrect_information_login' => 'Sorry Email Or Password Incorrect Please Check And Try Again',
     'forgot_password' => 'Forgot Password',
     'link_reset_sent' => 'The Link To Reset Password Sent',
     'reset_password' => 'Reset Password',
-    'admin' => 'Admin Account',
+    'admins_accounts' => 'Admins Accounts',
+    'admins_list' => 'Admins List',
     'dashboard' => 'Dashboard',
     'home' => 'Home',
     'new_admin' => 'New Admin',
@@ -33,5 +35,12 @@ return [
     'sPrevious' => 'Previous',
     'sSortAscending' => 'Sort Ascending',
     'sSortDescending' => 'Sort Descending',
+    'admin_id' => 'ID',
+    'admin_name' => 'Admin Name',
+    'admin_email' => 'Admin Email',
+    'created_at' => 'Created At',
+    'updated_at' => 'Updated At',
+    'edit' => 'Edit',
+    'delete' => 'Delete',
 
 ];

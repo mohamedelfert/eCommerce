@@ -106,30 +106,32 @@ class AdminDatatable extends DataTable
                 ],
                 //'language' => ["url" => adminUrl('datatables/lang')]   // Or
                 //'language' => self::lang(),  // Or
-                'language' => [
-                    'sProcessing' => trans('admin.sProcessing'),
-                    'sLengthMenu' => trans('admin.sLengthMenu'),
-                    'sZeroRecords' => trans('admin.sZeroRecords'),
-                    'sEmptyTable' => trans('admin.sEmptyTable'),
-                    'sInfo' => trans('admin.sInfo'),
-                    'sInfoEmpty' => trans('admin.sInfoEmpty'),
-                    'sInfoFiltered' => trans('admin.sInfoFiltered'),
-                    'sInfoPostFix' => trans('admin.sInfoPostFix'),
-                    'sSearch' => trans('admin.sSearch'),
-                    'sUrl' => trans('admin.sUrl'),
-                    'sInfoThousands' => trans('admin.sInfoThousands'),
-                    'sLoadingRecords' => trans('admin.sLoadingRecords'),
-                    'oPaginate' => [
-                        'sFirst' => trans('admin.sFirst'),
-                        'sLast' => trans('admin.sLast'),
-                        'sNext' => trans('admin.sNext'),
-                        'sPrevious' => trans('admin.sPrevious'),
-                    ],
-                    'oAria' => [
-                        'sSortAscending' => trans('admin.sSortAscending'),
-                        'sSortDescending' => trans('admin.sSortDescending'),
-                    ],
-                ]
+//                'language' => [
+//                    'sProcessing' => trans('admin.sProcessing'),
+//                    'sLengthMenu' => trans('admin.sLengthMenu'),
+//                    'sZeroRecords' => trans('admin.sZeroRecords'),
+//                    'sEmptyTable' => trans('admin.sEmptyTable'),
+//                    'sInfo' => trans('admin.sInfo'),
+//                    'sInfoEmpty' => trans('admin.sInfoEmpty'),
+//                    'sInfoFiltered' => trans('admin.sInfoFiltered'),
+//                    'sInfoPostFix' => trans('admin.sInfoPostFix'),
+//                    'sSearch' => trans('admin.sSearch'),
+//                    'sUrl' => trans('admin.sUrl'),
+//                    'sInfoThousands' => trans('admin.sInfoThousands'),
+//                    'sLoadingRecords' => trans('admin.sLoadingRecords'),
+//                    'oPaginate' => [
+//                        'sFirst' => trans('admin.sFirst'),
+//                        'sLast' => trans('admin.sLast'),
+//                        'sNext' => trans('admin.sNext'),
+//                        'sPrevious' => trans('admin.sPrevious'),
+//                    ],
+//                    'oAria' => [
+//                        'sSortAscending' => trans('admin.sSortAscending'),
+//                        'sSortDescending' => trans('admin.sSortDescending'),
+//                    ],
+//                ]
+                // Or
+                'language' => datatablesLang(),
             ])
             ->initComplete("function () {
                             this.api().columns([0,1,2,3,4]).every(function () {
@@ -170,17 +172,17 @@ class AdminDatatable extends DataTable
 //        ];
         // or
         return [
-            Column::computed('id', 'ID')->addClass('text-center'),
-            Column::computed('name', 'Admin Name')->addClass('text-center'),
-            Column::computed('email', 'Admin Email')->addClass('text-center'),
-            Column::computed('created_at', 'Created At')->addClass('text-center'),
-            Column::computed('updated_at', 'Updated At')->addClass('text-center'),
-            Column::computed('edit', 'Edit')
+            Column::computed('id', trans('admin.admin_id'))->addClass('text-center'),
+            Column::computed('name', trans('admin.admin_name'))->addClass('text-center'),
+            Column::computed('email', trans('admin.admin_email'))->addClass('text-center'),
+            Column::computed('created_at', trans('admin.created_at'))->addClass('text-center'),
+            Column::computed('updated_at', trans('admin.updated_at'))->addClass('text-center'),
+            Column::computed('edit', trans('admin.edit'))
                 ->exportable(false)
                 ->printable(false)
                 ->width(60)
                 ->addClass('text-center'),
-            Column::computed('delete', 'Delete')
+            Column::computed('delete', trans('admin.delete'))
                 ->exportable(false)
                 ->printable(false)
                 ->width(60)

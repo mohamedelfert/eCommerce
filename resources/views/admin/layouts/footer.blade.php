@@ -27,7 +27,11 @@
             $.widget.bridge('uibutton', $.ui.button)
         </script>
         <!-- Bootstrap 4 -->
-        <script src="{{ url('/design/admin/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+        @if(appDirection() == 'ltr')
+            <script src="{{ url('/design/admin/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+        @else
+            <script src="https://cdn.rtlcss.com/bootstrap/v4.2.1/js/bootstrap.min.js"></script>
+        @endif
         <!-- ChartJS -->
         <script src="{{ url('/design/admin/plugins/chart.js/Chart.min.js') }}"></script>
         <!-- Sparkline -->
