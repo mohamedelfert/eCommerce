@@ -15,6 +15,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
 
     Route::group(['middleware' => 'admin:admin'], function () {
         Route::resource('admin', 'AdminsController');
+        Route::delete('admin/destroy/all', 'AdminsController@delete_all');
 
         Route::get('/', function () {
             return view('admin.home');

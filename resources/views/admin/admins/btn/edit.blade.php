@@ -1,1 +1,1 @@
-<a href="{{ url('admin/'.$id.'/edit') }}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i></a>
+<a href="{{ adminUrl('admin/'.$id.'/edit') }}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i></a>

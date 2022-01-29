@@ -12,6 +12,8 @@ class Admin extends Authenticatable
 
     protected $table = 'admins';
 
+    protected $casts = ['created_at' => 'datetime:Y-m-d H:m:s','updated_at' => 'datetime:Y-m-d H:m:s'];
+
     protected $fillable = [
         'name', 'email', 'password',
     ];

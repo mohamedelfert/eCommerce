@@ -20,9 +20,10 @@ class AdminDatatable extends DataTable
     {
         return datatables()
             ->eloquent($query)
+            ->addColumn('checkbox', 'admin.admins.btn.checkbox')
             ->addColumn('edit', 'admin.admins.btn.edit')
             ->addColumn('delete', 'admin.admins.btn.delete')
-            ->rawColumns(['edit', 'delete']);
+            ->rawColumns(['edit', 'delete','checkbox']);
     }
 
     /**
@@ -77,7 +78,7 @@ class AdminDatatable extends DataTable
             ->columns($this->getColumns())
             ->minifiedAjax()
             ->dom('Blfrtip')
-            ->orderBy(1)
+            ->orderBy(1,'asc')
 //                    ->buttons(
 //                        Button::make('create'),
 //                        Button::make('export'),
@@ -103,6 +104,7 @@ class AdminDatatable extends DataTable
                     ['extend' => 'excel', 'className' => 'btn btn-secondary', 'text' => '<i class="fa fa-file-excel"> ' . trans('admin.excel') . ' </i>'],
                     ['extend' => 'reset', 'className' => 'btn btn-warning', 'text' => '<i class="fa fa-undo"> ' . trans('admin.reset') . ' </i>'],
                     ['extend' => 'reload', 'className' => 'btn btn-default', 'text' => '<i class="fa fa-retweet"> ' . trans('admin.reload') . ' </i>'],
+                    ['text'   => '<i class="fa fa-trash"> ' . trans('admin.delete') . ' </i>', 'className' => 'btn btn-danger delBtn'],
                 ],
                 //'language' => ["url" => adminUrl('datatables/lang')]   // Or
                 //'language' => self::lang(),  // Or
@@ -133,17 +135,17 @@ class AdminDatatable extends DataTable
                 // Or
                 'language' => datatablesLang(),
             ])
-            ->initComplete("function () {
-                            this.api().columns([0,1,2,3,4]).every(function () {
+            ->initComplete('function () {
+                            this.api().columns([1,2,3,4,5]).every(function () {
                                 var column = this;
-                                var input = document.createElement(\"input\");
+                                var input = document.createElement("input");
                                 $(input).appendTo($(column.footer()).empty())
-                                .on('keyup', function () {
+                                .on("keyup", function () {
                                     var val = $.fn.dataTable.util.escapeRegex($(this).val());
-                                    column.search(val ? val : '', true, false).draw();
+                                    column.search(val ? val : "", true, false).draw();
                                 });
                             });
-                        }");
+                        }');
     }
 
     /**
@@ -172,19 +174,55 @@ class AdminDatatable extends DataTable
 //        ];
         // or
         return [
-            Column::computed('id', trans('admin.admin_id'))->addClass('text-center'),
-            Column::computed('name', trans('admin.admin_name'))->addClass('text-center'),
-            Column::computed('email', trans('admin.admin_email'))->addClass('text-center'),
-            Column::computed('created_at', trans('admin.created_at'))->addClass('text-center'),
-            Column::computed('updated_at', trans('admin.updated_at'))->addClass('text-center'),
+            Column::computed('checkbox', '<input type="checkbox" class="select_all" onclick="checkAll()"/>')
+                ->exportable(false)
+                ->searchable(false)
+                ->printable(false)
+                ->orderable(false)
+                ->width(30)
+                ->addClass('text-center'),
+            Column::computed('id', trans('admin.admin_id'))
+                ->exportable(true)
+                ->searchable(true)
+                ->printable(true)
+                ->orderable(true)
+                ->addClass('text-center'),
+            Column::computed('name', trans('admin.admin_name'))
+                ->exportable(true)
+                ->searchable(true)
+                ->printable(true)
+                ->orderable(true)
+                ->addClass('text-center'),
+            Column::computed('email', trans('admin.admin_email'))
+                ->exportable(true)
+                ->searchable(true)
+                ->printable(true)
+                ->orderable(true)
+                ->addClass('text-center'),
+            Column::computed('created_at', trans('admin.created_at'))
+                ->exportable(true)
+                ->searchable(true)
+                ->printable(true)
+                ->orderable(true)
+                ->addClass('text-center'),
+            Column::computed('updated_at', trans('admin.updated_at'))
+                ->exportable(true)
+                ->searchable(true)
+                ->printable(true)
+                ->orderable(true)
+                ->addClass('text-center'),
             Column::computed('edit', trans('admin.edit'))
                 ->exportable(false)
+                ->searchable(false)
                 ->printable(false)
+                ->orderable(false)
                 ->width(60)
                 ->addClass('text-center'),
             Column::computed('delete', trans('admin.delete'))
                 ->exportable(false)
+                ->searchable(false)
                 ->printable(false)
+                ->orderable(false)
                 ->width(60)
                 ->addClass('text-center'),
         ];

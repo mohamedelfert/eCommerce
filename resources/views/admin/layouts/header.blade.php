@@ -24,6 +24,14 @@
             <link rel="stylesheet" href="{{ url('/design/admin/dist/css/rtl/adminlte.min.css') }}">
             <link rel="stylesheet" href="https://cdn.rtlcss.com/bootstrap/v4.2.1/css/bootstrap.min.css">
             <link rel="stylesheet" href="{{ url('/design/admin/dist/css/rtl/custom.css') }}">
+            <link rel="preconnect" href="https://fonts.googleapis.com">
+            <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+            <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600&display=swap" rel="stylesheet">
+            <style>
+                html,body{
+                    font-family: 'Cairo', sans-serif;
+                }
+            </style>
         @endif
         <!-- overlayScrollbars -->
         <link rel="stylesheet" href="{{ url('/design/admin/plugins/overlayScrollbars/css/OverlayScrollbars.min.css') }}">
@@ -31,5 +39,7 @@
         <link rel="stylesheet" href="{{ url('/design/admin/plugins/daterangepicker/daterangepicker.css') }}">
         <!-- summernote -->
         <link rel="stylesheet" href="{{ url('/design/admin/plugins/summernote/summernote-bs4.min.css') }}">
+        <!-- myFunctions js -->
+        <script src="{{ url('/design/admin/dist/js/myFunctions.js') }}"></script>
     </head>
     <body class="hold-transition sidebar-mini layout-fixed">
