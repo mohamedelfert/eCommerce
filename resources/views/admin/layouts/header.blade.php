@@ -14,6 +14,8 @@
         <link rel="stylesheet" href="{{ url('/design/admin/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css') }}">
         <!-- iCheck -->
         <link rel="stylesheet" href="{{ url('/design/admin/plugins/icheck-bootstrap/icheck-bootstrap.min.css') }}">
+        <!-- Toastr -->
+        @toastr_css
         <!-- JQVMap -->
         <link rel="stylesheet" href="{{ url('/design/admin/plugins/jqvmap/jqvmap.min.css') }}">
         <link rel="stylesheet" href="{{ url('/design/admin/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">

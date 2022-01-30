@@ -61,7 +61,7 @@ class UsersController extends Controller
         $data['password'] = bcrypt($request->password);
         $data['level'] = $request->level;
         User::create($data);
-        session()->flash('success', trans('user_validation.success'));
+        toastr()->success(trans('user_validation.success'));
         return redirect()->back();
     }
 
@@ -122,7 +122,7 @@ class UsersController extends Controller
         $data['password'] = bcrypt($request->password);
         $data['level'] = $request->level;
         $user->update($data);
-        session()->flash('success', trans('user_validation.update'));
+        toastr()->success(trans('user_validation.update'));
         return redirect(adminUrl('user'));
     }
 
@@ -135,14 +135,14 @@ class UsersController extends Controller
     public function destroy($id)
     {
         User::findOrFail($id)->delete();
-        session()->flash('error', trans('user_validation.delete'));
+        toastr()->error(trans('user_validation.delete'));
         return redirect()->back();
     }
 
     public function delete_all(Request $request)
     {
         User::whereIn('id',$request->box)->delete();
-        session()->flash('error', trans('user_validation.delete'));
+        toastr()->error(trans('user_validation.delete'));
         return redirect()->back();
     }
 }

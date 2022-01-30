@@ -58,7 +58,7 @@ class AdminsController extends Controller
         $data['email'] = $request->email;
         $data['password'] = bcrypt($request->password);
         Admin::create($data);
-        session()->flash('success', trans('admin_validation.success'));
+        toastr()->success(trans('admin_validation.success'));
         return redirect()->back();
     }
 
@@ -120,7 +120,7 @@ class AdminsController extends Controller
 //            $data['password'] = bcrypt($request->password);
 //        }
         $admin->update($data);
-        session()->flash('success', trans('admin_validation.update'));
+        toastr()->success(trans('admin_validation.update'));
         return redirect(adminUrl('admin'));
     }
 
@@ -133,7 +133,7 @@ class AdminsController extends Controller
     public function destroy($id)
     {
         Admin::findOrFail($id)->delete();
-        session()->flash('error', trans('admin_validation.delete'));
+        toastr()->error(trans('admin_validation.delete'));
         return back();
     }
 
@@ -145,7 +145,7 @@ class AdminsController extends Controller
         }else{
             Admin::find($request->box)->delete();
         }
-        session()->flash('error', trans('admin_validation.delete'));
+        toastr()->error(trans('admin_validation.delete'));
         return back();
     }
 }

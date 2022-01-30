@@ -46,6 +46,9 @@
         <script src="{{ url('/design/admin/plugins/daterangepicker/daterangepicker.js') }}"></script>
         <!-- Tempusdominus Bootstrap 4 -->
         <script src="{{ url('/design/admin/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js') }}"></script>
+        <!-- Toastr -->
+        @toastr_js
+        @toastr_render
         <!-- Summernote -->
         <script src="{{ url('/design/admin/plugins/summernote/summernote-bs4.min.js') }}"></script>
         <!-- overlayScrollbars -->
