@@ -2,13 +2,13 @@
 
 namespace App\DataTables;
 
-use App\Models\Admin;
+use App\User;
 use Yajra\DataTables\DataTableAbstract;
 use Yajra\DataTables\Html\Builder;
 use Yajra\DataTables\Html\Column;
 use Yajra\DataTables\Services\DataTable;
 
-class AdminDatatable extends DataTable
+class UserDatatable extends DataTable
 {
     /**
      * Build DataTable class.
@@ -20,21 +20,26 @@ class AdminDatatable extends DataTable
     {
         return datatables()
             ->eloquent($query)
-            ->addColumn('checkbox', 'admin.admins.btn.checkbox')
-            ->addColumn('edit', 'admin.admins.btn.edit')
-            ->addColumn('delete', 'admin.admins.btn.delete')
-            ->rawColumns(['edit', 'delete','checkbox']);
+            ->addColumn('checkbox', 'admin.users.btn.checkbox')
+            ->addColumn('edit', 'admin.users.btn.edit')
+            ->addColumn('delete', 'admin.users.btn.delete')
+            ->addColumn('level', 'admin.users.btn.level')
+            ->rawColumns(['checkbox', 'edit', 'delete','level']);
     }
 
     /**
      * Get query source of dataTable.
      *
-     * @param Admin $model
+     * @param User $model
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function query(Admin $model)
+    public function query(User $model)
     {
-        return $model->newQuery();
+        return $model->newQuery()->where(function ($query){
+            if (request()->has('level')){
+                return $query->where('level',request('level'));
+            }
+        });
     }
 
     /**
@@ -45,25 +50,25 @@ class AdminDatatable extends DataTable
     public function html()
     {
         return $this->builder()
-            ->setTableId('admindatatable-table')
+            ->setTableId('userdatatable-table')
             ->columns($this->getColumns())
             ->minifiedAjax()
             ->dom('Blfrtip')
-            ->orderBy(1,'asc')
+            ->orderBy(1, 'asc')
             ->parameters([
                 'buttons' => [
-                    ['extend' => 'create', 'className' => 'btn btn-success', 'text' => '<i class="fa fa-plus"> ' . trans('admin.new_admin') . ' </i>'],
-                    ['extend' => 'print', 'className' => 'btn btn-primary', 'text' => '<i class="fa fa-print"> ' . trans('admin.print') . ' </i>'],
-                    ['extend' => 'csv', 'className' => 'btn btn-info', 'text' => '<i class="fa fa-file"> ' . trans('admin.csv') . ' </i>'],
-                    ['extend' => 'excel', 'className' => 'btn btn-secondary', 'text' => '<i class="fa fa-file-excel"> ' . trans('admin.excel') . ' </i>'],
-                    ['extend' => 'reset', 'className' => 'btn btn-warning', 'text' => '<i class="fa fa-undo"> ' . trans('admin.reset') . ' </i>'],
-                    ['extend' => 'reload', 'className' => 'btn btn-default', 'text' => '<i class="fa fa-retweet"> ' . trans('admin.reload') . ' </i>'],
-                    ['text'   => '<i class="fa fa-trash"> ' . trans('admin.delete') . ' </i>', 'className' => 'btn btn-danger delBtn'],
+                    ['extend' => 'create', 'className' => 'btn btn-success', 'text' => '<i class="fa fa-plus"> ' . trans('user.new_user') . ' </i>'],
+                    ['extend' => 'print', 'className' => 'btn btn-primary', 'text' => '<i class="fa fa-print"> ' . trans('user.print') . ' </i>'],
+                    ['extend' => 'csv', 'className' => 'btn btn-info', 'text' => '<i class="fa fa-file"> ' . trans('user.csv') . ' </i>'],
+                    ['extend' => 'excel', 'className' => 'btn btn-secondary', 'text' => '<i class="fa fa-file-excel"> ' . trans('user.excel') . ' </i>'],
+                    ['extend' => 'reset', 'className' => 'btn btn-warning', 'text' => '<i class="fa fa-undo"> ' . trans('user.reset') . ' </i>'],
+                    ['extend' => 'reload', 'className' => 'btn btn-default', 'text' => '<i class="fa fa-retweet"> ' . trans('user.reload') . ' </i>'],
+                    ['text' => '<i class="fa fa-trash"> ' . trans('user.delete') . ' </i>', 'className' => 'btn btn-danger delBtn'],
                 ],
                 'language' => datatablesLang(),
             ])
             ->initComplete('function () {
-                            this.api().columns([1,2,3,4,5]).every(function () {
+                            this.api().columns([2,3]).every(function () {
                                 var column = this;
                                 var input = document.createElement("input");
                                 $(input).appendTo($(column.footer()).empty())
@@ -90,44 +95,50 @@ class AdminDatatable extends DataTable
                 ->orderable(false)
                 ->width(30)
                 ->addClass('text-center'),
-            Column::computed('id', trans('admin.admin_id'))
+            Column::computed('id', trans('user.user_id'))
                 ->exportable(true)
                 ->searchable(true)
                 ->printable(true)
                 ->orderable(true)
                 ->addClass('text-center'),
-            Column::computed('name', trans('admin.admin_name'))
+            Column::computed('name', trans('user.user_name'))
                 ->exportable(true)
                 ->searchable(true)
                 ->printable(true)
                 ->orderable(true)
                 ->addClass('text-center'),
-            Column::computed('email', trans('admin.admin_email'))
+            Column::computed('email', trans('user.user_email'))
                 ->exportable(true)
                 ->searchable(true)
                 ->printable(true)
                 ->orderable(true)
                 ->addClass('text-center'),
-            Column::computed('created_at', trans('admin.created_at'))
+            Column::computed('level', trans('user.level'))
                 ->exportable(true)
                 ->searchable(true)
                 ->printable(true)
                 ->orderable(true)
                 ->addClass('text-center'),
-            Column::computed('updated_at', trans('admin.updated_at'))
+            Column::computed('created_at', trans('user.created_at'))
                 ->exportable(true)
                 ->searchable(true)
                 ->printable(true)
                 ->orderable(true)
                 ->addClass('text-center'),
-            Column::computed('edit', trans('admin.edit'))
+            Column::computed('updated_at', trans('user.updated_at'))
+                ->exportable(true)
+                ->searchable(true)
+                ->printable(true)
+                ->orderable(true)
+                ->addClass('text-center'),
+            Column::computed('edit', trans('user.edit'))
                 ->exportable(false)
                 ->searchable(false)
                 ->printable(false)
                 ->orderable(false)
                 ->width(60)
                 ->addClass('text-center'),
-            Column::computed('delete', trans('admin.delete'))
+            Column::computed('delete', trans('user.delete'))
                 ->exportable(false)
                 ->searchable(false)
                 ->printable(false)
@@ -144,6 +155,6 @@ class AdminDatatable extends DataTable
      */
     protected function filename()
     {
-        return 'Admin_' . date('YmdHis');
+        return 'User_' . date('YmdHis');
     }
 }

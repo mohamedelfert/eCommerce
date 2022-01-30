@@ -18,6 +18,8 @@ class AdminSeeder extends Seeder
         $data['name'] = 'Admin';
         $data['email'] = 'admin@yahoo.com';
         $data['password'] = Hash::make('123456');
+        $data['created_at'] = date('Y-m-d H:m:s');
+        $data['updated_at'] = date('Y-m-d H:m:s');
 
         DB::table('admins')->insert($data);
     }
