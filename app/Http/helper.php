@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Settings;
 use Illuminate\Support\Facades\Request;
 
 if (!function_exists('adminUrl')) {
@@ -13,6 +14,13 @@ if (!function_exists('admin')) {
     function admin()
     {
         return auth()->guard('admin');
+    }
+}
+
+if (!function_exists('setting')) {
+    function setting()
+    {
+        return Settings::orderBy('id', 'desc')->first();
     }
 }
 
@@ -33,7 +41,7 @@ if (!function_exists('lang')) {
         if (session()->has('lang')) {
             return session('lang');
         } else {
-            return 'en';
+            return setting()->main_lang;
         }
     }
 }

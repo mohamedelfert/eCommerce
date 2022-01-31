@@ -22,6 +22,10 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
         Route::resource('user', 'UsersController');
         Route::delete('user/destroy/all', 'UsersController@delete_all');
 
+        /**************************** Settings *******************************/
+        Route::get('setting', 'SettingsController@setting');
+        Route::post('setting', 'SettingsController@setting_save');
+
         Route::get('/', function () {
             return view('admin.home');
         });

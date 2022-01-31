@@ -108,7 +108,7 @@
                     <ul class="nav nav-treeview" {{ active_menu('admin')[1] }}>
                         <li class="nav-item">
                             <a href="{{ adminUrl('admin') }}" class="nav-link">
-                                <i class="nav-icon fas fa-users"></i>
+                                <i class="nav-icon fas fa-user-cog"></i>
                                 <p>{{ trans('admin.admins_list') }}</p>
                             </a>
                         </li>
@@ -125,7 +125,7 @@
                     <ul class="nav nav-treeview" style="{{ active_menu('user')[1] }}">
                         <li class="nav-item">
                             <a href="{{ adminUrl('user') }}" class="nav-link">
-                                <i class="nav-icon fas fa-user-alt"></i>
+                                <i class="nav-icon fas fa-users-cog"></i>
                                 <p>{{ trans('user.users_list') }}</p>
                             </a>
                             <a href="{{ adminUrl('user') }}?level=user" class="nav-link">
@@ -142,6 +142,12 @@
                             </a>
                         </li>
                     </ul>
+                </li>
+                <li class="nav-item {{ active_menu('setting')[0] }}">
+                    <a href="{{ adminUrl('setting') }}" class="nav-link">
+                        <i class="nav-icon fas fa-cogs"></i>
+                        <p>{{ trans('admin.settings') }}</p>
+                    </a>
                 </li>
             </ul>
         </nav>
