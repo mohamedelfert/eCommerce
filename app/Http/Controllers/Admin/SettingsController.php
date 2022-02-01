@@ -18,7 +18,37 @@ class SettingsController extends Controller
 
     public function setting_save(Request $request)
     {
-        $data = $request->except('_token', '_method');
+        $rules = [
+            'logo' => validate_image(),
+            'icon' => validate_image(),
+        ];
+        $validate_msg_ar = [
+            'logo.image' => trans('admin.logo_type'),
+            'logo.mimes' => trans('admin.logo_exe'),
+            'icon.image' => trans('admin.icon_type'),
+            'icon.mimes' => trans('admin.icon_exe'),
+        ];
+        $data = $this->validate($request, $rules, $validate_msg_ar);
+
+        if ($request->hasFile('logo')) {
+//            !empty(setting()->logo) ? Storage::delete(setting()->logo) : '';
+//            $data['logo'] = $request->file('logo')->store('settings');
+            // use UploadController to upload files
+            $data['logo'] = upload_file()->upload([
+                'file' => 'logo',
+                'path' => 'settings',
+                'upload_type' => 'single',
+                'delete_file' => setting()->logo,
+            ]);
+        }
+        if ($request->hasFile('icon')) {
+            $data['icon'] = upload_file()->upload([
+                'file' => 'icon',
+                'path' => 'settings',
+                'upload_type' => 'single',
+                'delete_file' => setting()->icon,
+            ]);
+        }
         Settings::orderBy('id', 'asc')->update($data);
         toastr()->success(trans('admin_validation.update'));
         return back();

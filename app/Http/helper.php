@@ -24,13 +24,20 @@ if (!function_exists('setting')) {
     }
 }
 
+if (!function_exists('upload_file')) {
+    function upload_file()
+    {
+        return new App\Http\Controllers\Admin\UploadController;
+    }
+}
+
 if (!function_exists('active_menu')) {
     function active_menu($link)
     {
-        if (preg_match('/'.$link.'/i',Request::segment(2))){
-            return ['menu-open','display:block'];
-        }else{
-            return ['',''];
+        if (preg_match('/' . $link . '/i', Request::segment(2))) {
+            return ['menu-open', 'display:block'];
+        } else {
+            return ['', ''];
         }
     }
 }
@@ -50,9 +57,9 @@ if (!function_exists('appDirection')) {
     function appDirection()
     {
         if (session()->has('lang')) {
-            if (session('lang') == 'ar'){
+            if (session('lang') == 'ar') {
                 return 'rtl';
-            }else{
+            } else {
                 return 'ltr';
             }
         } else {
@@ -88,5 +95,16 @@ if (!function_exists('datatablesLang')) {
                 'sSortDescending' => trans('admin.sSortDescending'),
             ],
         ];
+    }
+}
+
+if (!function_exists('validate_image')) {
+    function validate_image($exe = null)
+    {
+        if ($exe === null) {
+            return 'image|mimes:jpeg,jpg,gif,png,bmp';
+        } else {
+            return 'image|mimes:' . $exe;
+        }
     }
 }

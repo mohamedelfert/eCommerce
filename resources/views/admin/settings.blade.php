@@ -29,25 +29,35 @@
             <div class="form-group row">
                 {!! Form::label('logo',trans('admin.logo'),['class'=>'col-sm-2 col-form-label']) !!}
                 <div class="col-sm-10">
-                    {!! Form::file('logo',['class'=>'custom-select rounded-0']) !!}
+                    {!! Form::file('logo',['class'=>'form-control']) !!}
                 </div>
+                @if(!empty(setting()->logo))
+                    <div class="col-sm-6">
+                        <img class="img-fluid mb-3" src="{{ Storage::url(setting()->logo) }}" alt="logo" style="width: 150px;height: 100px;">
+                    </div>
+                @endif
             </div>
             <div class="form-group row">
                 {!! Form::label('icon',trans('admin.icon'),['class'=>'col-sm-2 col-form-label']) !!}
                 <div class="col-sm-10">
-                    {!! Form::file('icon',['class'=>'custom-select rounded-0']) !!}
+                    {!! Form::file('icon',['class'=>'form-control']) !!}
                 </div>
+                @if(!empty(setting()->icon))
+                    <div class="col-sm-6">
+                        <img class="img-fluid mb-3" src="{{ Storage::url(setting()->icon) }}" alt="icon" style="width: 100px;height: 80px;">
+                    </div>
+                @endif
             </div>
             <div class="form-group row">
                 {!! Form::label('description',trans('admin.description'),['class'=>'col-sm-2 col-form-label']) !!}
                 <div class="col-sm-10">
-                    {!! Form::textarea('description',setting()->description,['class'=>'custom-select rounded-0']) !!}
+                    {!! Form::textarea('description',setting()->description,['class'=>'form-control','rows'=>'5']) !!}
                 </div>
             </div>
             <div class="form-group row">
                 {!! Form::label('keywords',trans('admin.keywords'),['class'=>'col-sm-2 col-form-label']) !!}
                 <div class="col-sm-10">
-                    {!! Form::textarea('keywords',setting()->keywords,['class'=>'custom-select rounded-0']) !!}
+                    {!! Form::textarea('keywords',setting()->keywords,['class'=>'form-control','rows'=>'5']) !!}
                 </div>
             </div>
             <div class="form-group row">
@@ -67,7 +77,7 @@
             <div class="form-group row">
                 {!! Form::label('message_maintenance',trans('admin.message_maintenance'),['class'=>'col-sm-2 col-form-label']) !!}
                 <div class="col-sm-10">
-                    {!! Form::textarea('message_maintenance',setting()->message_maintenance,['class'=>'custom-select rounded-0']) !!}
+                    {!! Form::textarea('message_maintenance',setting()->message_maintenance,['class'=>'form-control','rows'=>'5']) !!}
                 </div>
             </div>
             <div class="mb-3" style="margin-top: 5px">

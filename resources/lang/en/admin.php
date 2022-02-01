@@ -66,4 +66,8 @@ return [
     'en' => 'English',
     'open' => 'Open',
     'close' => 'Close',
+    'logo_type' => 'Site Logo Must Be An Image',
+    'logo_exe' => 'Site Logo Exe Must Be (JPEG , JPG , PNG , GIF , BMP)',
+    'icon_type' => 'Site Icon Must Be An Image',
+    'icon_exe' => 'Site Icon Exe Must Be (JPEG , JPG , PNG , GIF , BMP)',
 ];

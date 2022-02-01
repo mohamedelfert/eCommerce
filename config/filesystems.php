@@ -55,6 +55,13 @@ return [
             'visibility' => 'public',
         ],
 
+        'upload_path' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public'),
+            'url' => '', // set this url in RouteServiceProvider in map() function.
+            'visibility' => 'public',
+        ],
+
         's3' => [
             'driver' => 's3',
             'key' => env('AWS_ACCESS_KEY_ID'),
