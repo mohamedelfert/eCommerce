@@ -70,4 +70,10 @@ return [
     'logo_exe' => 'لوجو الموقع يجب ان يكون (JPEG , JPG , PNG , GIF , BMP)',
     'icon_type' => 'ايقونه الموقع يجب ان يكون صوره',
     'icon_exe' => 'ايقونه الموقع يجب ان يكون (JPEG , JPG , PNG , GIF , BMP)',
+    'v_sitename_ar' => 'اسم الموقع بالعربيه مطلوب',
+    'v_sitename_en' => 'اسم الموقع بالانجليزيه مطلوب',
+    'site_email_required' => 'البريد الالكتروني بالموقع مطلوب',
+    'site_email' => 'يجب ان يكون البريد الالكتروني مثل (test@yahoo.com)',
+    'site_main_lang' => 'اللغه الاساسيه للموقع مطلوبه',
+    'site_status' => 'حاله الموقع مطلوبه',
 ];

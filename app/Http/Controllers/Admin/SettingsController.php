@@ -19,16 +19,36 @@ class SettingsController extends Controller
     public function setting_save(Request $request)
     {
         $rules = [
+            'sitename_ar' => 'required',
+            'sitename_en' => 'required',
+            'email' => 'required|email',
+            'main_lang' => 'required',
+            'status' => 'required',
             'logo' => validate_image(),
             'icon' => validate_image(),
         ];
         $validate_msg_ar = [
+            'sitename_ar.required' => trans('admin.v_sitename_ar'),
+            'sitename_en.required' => trans('admin.v_sitename_en'),
+            'email.required' => trans('admin.site_email_required'),
+            'email.email' => trans('admin.site_email'),
+            'main_lang.required' => trans('admin.site_main_lang'),
+            'status.required' => trans('admin.site_status'),
             'logo.image' => trans('admin.logo_type'),
             'logo.mimes' => trans('admin.logo_exe'),
             'icon.image' => trans('admin.icon_type'),
             'icon.mimes' => trans('admin.icon_exe'),
         ];
         $data = $this->validate($request, $rules, $validate_msg_ar);
+
+        $data['sitename_ar'] = $request->sitename_ar;
+        $data['sitename_en'] = $request->sitename_en;
+        $data['email'] = $request->email;
+        $data['main_lang'] = $request->main_lang;
+        $data['description'] = $request->description;
+        $data['keywords'] = $request->keywords;
+        $data['status'] = $request->status;
+        $data['message_maintenance'] = $request->message_maintenance;
 
         if ($request->hasFile('logo')) {
 //            !empty(setting()->logo) ? Storage::delete(setting()->logo) : '';

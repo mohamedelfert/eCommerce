@@ -70,4 +70,10 @@ return [
     'logo_exe' => 'Site Logo Exe Must Be (JPEG , JPG , PNG , GIF , BMP)',
     'icon_type' => 'Site Icon Must Be An Image',
     'icon_exe' => 'Site Icon Exe Must Be (JPEG , JPG , PNG , GIF , BMP)',
+    'v_sitename_ar' => 'Arabic Site Name Is Required',
+    'v_sitename_en' => 'English Site Name Is Required',
+    'site_email_required' => 'Site E-Mail Is Required',
+    'site_email' => 'Site E-Mail Must Be As (test@yahoo.com)',
+    'site_main_lang' => 'Site Main Language Is Required',
+    'site_status' => 'Site Status Is Required',
 ];
