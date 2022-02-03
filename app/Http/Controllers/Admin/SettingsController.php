@@ -26,6 +26,9 @@ class SettingsController extends Controller
             'status' => 'required',
             'logo' => validate_image(),
             'icon' => validate_image(),
+            'description' => 'required',
+            'keywords' => 'required',
+            'message_maintenance' => 'required',
         ];
         $validate_msg_ar = [
             'sitename_ar.required' => trans('admin.v_sitename_ar'),
@@ -38,6 +41,9 @@ class SettingsController extends Controller
             'logo.mimes' => trans('admin.logo_exe'),
             'icon.image' => trans('admin.icon_type'),
             'icon.mimes' => trans('admin.icon_exe'),
+            'description.required' => trans('admin.desc_required'),
+            'keywords.required' => trans('admin.keywords_required'),
+            'message_maintenance.required' => trans('admin.maintenance_required'),
         ];
         $data = $this->validate($request, $rules, $validate_msg_ar);
 

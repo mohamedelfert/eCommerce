@@ -41,6 +41,11 @@
         <link rel="stylesheet" href="{{ url('/design/admin/plugins/daterangepicker/daterangepicker.css') }}">
         <!-- summernote -->
         <link rel="stylesheet" href="{{ url('/design/admin/plugins/summernote/summernote-bs4.min.css') }}">
+
+        <!-- site icon -->
+        <link rel="icon" href="{{ Storage::url(setting()->icon) }}">
+        <!-- site icon -->
+
         <!-- myFunctions js -->
         <script src="{{ url('/design/admin/dist/js/myFunctions.js') }}"></script>
     </head>

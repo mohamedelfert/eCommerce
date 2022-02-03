@@ -76,4 +76,7 @@ return [
     'site_email' => 'Site E-Mail Must Be As (test@yahoo.com)',
     'site_main_lang' => 'Site Main Language Is Required',
     'site_status' => 'Site Status Is Required',
+    'desc_required' => 'Site Description Is Required',
+    'keywords_required' => 'Site Keywords Is Required',
+    'maintenance_required' => 'Site Maintenance Message Is Required',
 ];

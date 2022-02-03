@@ -76,4 +76,7 @@ return [
     'site_email' => 'يجب ان يكون البريد الالكتروني مثل (test@yahoo.com)',
     'site_main_lang' => 'اللغه الاساسيه للموقع مطلوبه',
     'site_status' => 'حاله الموقع مطلوبه',
+    'desc_required' => 'وصف الموقع مطلوب',
+    'keywords_required' => 'الكلمات الدليليه مطلوبه',
+    'maintenance_required' => 'رساله الصيانه مطلوبه',
 ];

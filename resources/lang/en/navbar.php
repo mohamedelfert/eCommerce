@@ -1,5 +1,5 @@
 <?php
 return [
-  'title' => 'E-Commerce System',
+  'title' => 'Naseem Cosmetics',
   'logout' => 'Sign Out',
 ];

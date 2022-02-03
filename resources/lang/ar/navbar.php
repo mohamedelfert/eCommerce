@@ -1,5 +1,5 @@
 <?php
 return [
-  'title' => 'E-Commerce System',
-  'logout' => 'Sign Out',
+  'title' => 'نسيم - مستحضرات تجميل',
+  'logout' => 'تسجيل خروج',
 ];

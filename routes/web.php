@@ -13,6 +13,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('front/home');
+Route::group(['middleware' => 'maintenance'], function () {
+    Route::get('/', function () {
+        return view('front/home');
+    });
 });
+
+Route::get('maintenance', function () {
+    if (setting()->status == 'open') {
+        return redirect('/');
+    }
+
+    return view('front.maintenance');
+});
+
