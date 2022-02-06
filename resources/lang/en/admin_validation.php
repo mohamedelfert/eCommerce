@@ -13,4 +13,11 @@ return [
     'update' => 'Data Has Been Successfully Updated',
     'delete' => 'Data Has Been Successfully Deleted',
     'error' => 'There Is An Error Please Check The Data And Try Again',
+    'country_name_ar' => 'Country Name Arabic Is Required',
+    'country_name_en' => 'Country Name English Is Required',
+    'mob' => 'Country Mobile Is Required',
+    'code' => 'Country Code Is Required',
+    'country_logo_required' => 'Country Logo Is Required',
+    'country_logo_type' => 'Country Flag Must Be Image',
+    'country_logo_exe' => 'Country Flag Must Be (JPEG , JPG , PNG , GIF , BMP)',
 ];

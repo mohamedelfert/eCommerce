@@ -79,4 +79,13 @@ return [
     'desc_required' => 'Site Description Is Required',
     'keywords_required' => 'Site Keywords Is Required',
     'maintenance_required' => 'Site Maintenance Message Is Required',
+    'countries' => 'Countries',
+    'countries_list' => 'Countries List',
+    'new_country' => 'New Country',
+    'edit_country' => 'Edit Country',
+    'country_name_ar' => 'Country Name Arabic',
+    'country_name_en' => 'Country Name English',
+    'mob' => 'Country Symbol',
+    'code' => 'Country Code',
+    'country_logo' => 'Country Logo',
 ];

@@ -143,6 +143,23 @@
                         </li>
                     </ul>
                 </li>
+                <li class="nav-item {{ active_menu('countries')[0] }}">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-flag"></i>
+                        <p>
+                            {{ trans('admin.countries') }}
+                            <i class="fas fa-angle-left right"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview" {{ active_menu('countries')[1] }}>
+                        <li class="nav-item">
+                            <a href="{{ adminUrl('countries') }}" class="nav-link">
+                                <i class="nav-icon fas fa-flag-checkered"></i>
+                                <p>{{ trans('admin.countries_list') }}</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
                 <li class="nav-item {{ active_menu('setting')[0] }}">
                     <a href="{{ adminUrl('setting') }}" class="nav-link">
                         <i class="nav-icon fas fa-cogs"></i>

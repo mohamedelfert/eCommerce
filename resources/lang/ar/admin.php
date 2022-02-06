@@ -79,4 +79,13 @@ return [
     'desc_required' => 'وصف الموقع مطلوب',
     'keywords_required' => 'الكلمات الدليليه مطلوبه',
     'maintenance_required' => 'رساله الصيانه مطلوبه',
+    'countries' => 'الدول',
+    'countries_list' => 'قائمه الدول',
+    'new_country' => 'دوله جديده',
+    'edit_country' => 'تعديل دوله',
+    'country_name_ar' => 'اسم الدوله عربي',
+    'country_name_en' => 'اسم الدوله انجليزي',
+    'mob' => 'رمز الدوله',
+    'code' => 'كود الدوله',
+    'country_logo' => 'علم الدوله',
 ];
