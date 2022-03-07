@@ -14,8 +14,8 @@
                 <div class="modal-body">
                     <h4 class="text-danger">{{ trans('admin.delete_message') }}</h4><br>
                     <div class="form-group row">
-                        {!! Form::label('country_name_ar',trans('admin.country_name_ar'),['class'=>'col-sm-2 col-form-label']) !!}
-                        <div class="col-sm-10">
+                        {!! Form::label('country_name_ar',trans('admin.country_name_ar'),['class'=>'col-sm-5 col-form-label']) !!}
+                        <div class="col-sm-6">
                             {!! Form::text('country_name_ar',session('lang') == 'ar' ? $country_name_ar : $country_name_en,['class'=>'form-control','id'=>'country_name_ar','readonly']) !!}
                         </div>
                     </div>

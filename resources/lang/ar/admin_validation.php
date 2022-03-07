@@ -20,4 +20,8 @@ return [
     'country_logo_required' => 'علم الدوله مطلوب',
     'country_logo_type' => 'علم الدوله يجب ان يكون صوره',
     'country_logo_exe' => 'علم الدوله يجب ان يكون (JPEG , JPG , PNG , GIF , BMP)',
+    'city_name_ar' => 'اسم المدينه بالعربيه مطلوب',
+    'city_name_en' => 'اسم المدينه بالانجليزيه مطلوب',
+    'state_name_ar' => 'اسم المنطقه بالعربيه مطلوب',
+    'state_name_en' => 'اسم المنطقه بالانجليزيه مطلوب',
 ];

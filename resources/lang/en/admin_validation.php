@@ -20,4 +20,8 @@ return [
     'country_logo_required' => 'Country Logo Is Required',
     'country_logo_type' => 'Country Flag Must Be Image',
     'country_logo_exe' => 'Country Flag Must Be (JPEG , JPG , PNG , GIF , BMP)',
+    'city_name_ar' => 'City Name Arabic Is Required',
+    'city_name_en' => 'City Name English Is Required',
+    'state_name_ar' => 'State Name Arabic Is Required',
+    'state_name_en' => 'State Name English Is Required',
 ];

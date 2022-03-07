@@ -26,6 +26,14 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
         Route::resource('countries', 'CountryController');
         Route::delete('countries/destroy/all', 'CountryController@delete_all');
 
+        /**************************** Cities *******************************/
+        Route::resource('cities', 'CityController');
+        Route::delete('cities/destroy/all', 'CityController@delete_all');
+
+        /**************************** States *******************************/
+        Route::resource('states', 'StateController');
+        Route::delete('states/destroy/all', 'StateController@delete_all');
+
         /**************************** Settings *******************************/
         Route::get('setting', 'SettingsController@setting');
         Route::post('setting', 'SettingsController@setting_save');
