@@ -24,4 +24,9 @@ return [
     'city_name_en' => 'City Name English Is Required',
     'state_name_ar' => 'State Name Arabic Is Required',
     'state_name_en' => 'State Name English Is Required',
+    'department_name_ar' => 'Department Name Arabic Is Required',
+    'department_name_en' => 'Department Name English Is Required',
+    'department_icon_type' => 'Department Icon Must Be Image',
+    'department_icon_exe' => 'Department Icon Must Be (JPEG , JPG , PNG , GIF , BMP)',
+    'department_parent_id' => 'Department Id Must Be Numeric',
 ];

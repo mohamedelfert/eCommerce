@@ -34,6 +34,9 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
         Route::resource('states', 'StateController');
         Route::delete('states/destroy/all', 'StateController@delete_all');
 
+        /**************************** Departments *******************************/
+        Route::resource('departments', 'DepartmentController');
+
         /**************************** Settings *******************************/
         Route::get('setting', 'SettingsController@setting');
         Route::post('setting', 'SettingsController@setting_save');
@@ -46,10 +49,10 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
     });
 
     /**************************** this route for change language *******************************/
-    Route::get('lang/{lang}',function ($lang){
-       session()->has('lang') ? session()->forget('lang') : '';
-       $lang == 'ar' ? session()->put('lang','ar') : session()->put('lang','en');
-       return back();
+    Route::get('lang/{lang}', function ($lang) {
+        session()->has('lang') ? session()->forget('lang') : '';
+        $lang == 'ar' ? session()->put('lang', 'ar') : session()->put('lang', 'en');
+        return back();
     });
 
 });

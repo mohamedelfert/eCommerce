@@ -102,4 +102,10 @@ return [
     'state_name_ar' => 'State Name Arabic',
     'state_name_en' => 'State Name English',
     'city_id' => 'City Name',
+    'departments' => 'Departments',
+    'departments_list' => 'Departments List',
+    'new_department' => 'New Department',
+    'edit_department' => 'Edit Department',
+    'department_name_ar' => 'Department Name Arabic',
+    'department_name_en' => 'Department Name English',
 ];
