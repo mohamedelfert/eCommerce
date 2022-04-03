@@ -59,6 +59,10 @@
         <script src="{{ url('/design/admin/dist/js/demo.js') }}"></script>
         <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
         <script src="{{ url('/design/admin/dist/js/pages/dashboard.js') }}"></script>
+        <!-- JsTree -->
+        <script src="{{ url('/design/admin/jstree/dist/jstree.js') }}"></script>
+        <script src="{{ url('/design/admin/jstree/jstree.wholerow.js') }}"></script>
+        <script src="{{ url('/design/admin/jstree/jstree.checkbox.js') }}"></script>
 
         @stack('js')
         @stack('css')

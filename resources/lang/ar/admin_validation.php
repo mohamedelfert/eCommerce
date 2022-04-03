@@ -24,4 +24,9 @@ return [
     'city_name_en' => 'اسم المدينه بالانجليزيه مطلوب',
     'state_name_ar' => 'اسم المنطقه بالعربيه مطلوب',
     'state_name_en' => 'اسم المنطقه بالانجليزيه مطلوب',
+    'department_name_ar' => 'اسم القسم بالعربيه مطلوب',
+    'department_name_en' => 'اسم القسم بالانجليزيه مطلوب',
+    'department_icon_type' => 'ايقونه القسم يجب ان تكون صوره',
+    'department_icon_exe' => 'ايقونه القسم يجب ان تكون (JPEG , JPG , PNG , GIF , BMP)',
+    'department_parent_id' => 'يجب ان يكون رقم القسم',
 ];

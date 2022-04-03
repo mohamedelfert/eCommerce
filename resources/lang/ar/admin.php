@@ -102,4 +102,10 @@ return [
     'state_name_ar' => 'اسم المنطقه عربي',
     'state_name_en' => 'اسم المنطقه انجليزي',
     'city_id' => 'اسم المدينه',
+    'departments' => 'الاقسام',
+    'departments_list' => 'قائمه الاقسام',
+    'new_department' => 'قسم جديد',
+    'edit_department' => 'تعديل قسم',
+    'department_name_ar' => 'اسم القسم عربي',
+    'department_name_en' => 'اسم القسم انجليزي',
 ];
