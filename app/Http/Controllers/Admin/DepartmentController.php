@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Department;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Storage;
 
 class DepartmentController extends Controller
 {
@@ -153,21 +154,28 @@ class DepartmentController extends Controller
      */
     public function destroy($id)
     {
-        Department::findOrFail($id)->delete();
+        self::delete_parent($id);
         toastr()->error(trans('admin_validation.delete'));
         return redirect()->back();
     }
 
-    public function delete_all(Request $request)
+    public static function delete_parent($id)
     {
-        if (is_array($request->box)) {
-            foreach ($request->box as $id) {
-                Department::findOrFail($id)->delete();
+        $parent_department = Department::where('parent', $id)->get();
+        foreach ($parent_department as $sub_department) {
+            self::delete_parent($sub_department->id);
+            if (!empty($sub_department->icon)) {
+                Storage::has($sub_department->icon) ? Storage::delete($sub_department->icon) : '';
             }
-        } else {
-            Department::findOrFail($request->box)->delete();
+            $sub = Department::find($sub_department->id);
+            if (!empty($sub)) {
+                $sub->delete();
+            }
         }
-        toastr()->error(trans('admin_validation.delete'));
-        return redirect()->back();
+        $department = Department::find($id);
+        if (!empty($department->icon)) {
+            Storage::has($department->icon) ? Storage::delete($department->icon) : '';
+        }
+        $department->delete();
     }
 }

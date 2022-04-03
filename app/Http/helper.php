@@ -50,6 +50,7 @@ if (!function_exists('lang')) {
         if (session()->has('lang')) {
             return session('lang');
         } else {
+            session()->put('lang',setting()->main_lang);
             return setting()->main_lang;
         }
     }
@@ -112,7 +113,7 @@ if (!function_exists('validate_image')) {
 }
 
 if (!function_exists('load_department')) {
-    function load_department($select = null)
+    function load_department($select = null,$option = null)
     {
         $departments = Department::selectRaw('department_name_' . session('lang') . ' as text')
             ->selectRaw('id as id')
@@ -121,14 +122,24 @@ if (!function_exists('load_department')) {
         $department_array = [];
         foreach ($departments as $department) {
             $list_array = [];
+            $list_array['icon'] = '';
+            $list_array['li_attr'] = '';
+            $list_array['a_attr'] = '';
+            $list_array['children'] = [];
             if ($select !== null and $select == $department->id) {
-                $list_array['icon'] = '';
-                $list_array['li_attr'] = '';
-                $list_array['a_attr'] = '';
-                $list_array['children'] = [];
                 $list_array['state'] = [
                     'opened' => true,
                     'selected' => true,
+                    'disabled' => false,
+                    'hidden' => false,
+                ];
+            }
+            if ($option !== null and $option == $department->id) {
+                $list_array['state'] = [
+                    'opened' => false,
+                    'selected' => false,
+                    'disabled' => true,
+                    'hidden' => true,
                 ];
             }
             $list_array['id'] = $department->id;

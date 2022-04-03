@@ -108,4 +108,5 @@ return [
     'edit_department' => 'تعديل قسم',
     'department_name_ar' => 'اسم القسم عربي',
     'department_name_en' => 'اسم القسم انجليزي',
+    'delete_department' => 'حذف القسم',
 ];

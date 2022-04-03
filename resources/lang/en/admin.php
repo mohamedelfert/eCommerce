@@ -111,4 +111,5 @@ return [
     'department_description' => 'Department Description',
     'department_keyword' => 'Department Keyword',
     'department_icon' => 'Department Icon',
+    'delete_department' => 'Delete Department',
 ];
