@@ -14,6 +14,6 @@ class Department extends Model
 
     public function parents()
     {
-        return $this->hasMany(Department::class, 'id', 'parent_id');
+        return $this->hasMany(Department::class, 'id', 'parent');
     }
 }

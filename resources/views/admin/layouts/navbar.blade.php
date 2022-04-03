@@ -157,7 +157,7 @@
                 </li>
                 <li class="nav-item {{ active_menu('cities')[0] }}">
                     <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-flag"></i>
+                        <i class="nav-icon fas fa-city"></i>
                         <p>
                             {{ trans('admin.cities') }}
                             <i class="fas fa-angle-left right"></i>
@@ -166,7 +166,7 @@
                     <ul class="nav nav-treeview" {{ active_menu('cities')[1] }}>
                         <li class="nav-item">
                             <a href="{{ adminUrl('cities') }}" class="nav-link">
-                                <i class="nav-icon fas fa-flag-checkered"></i>
+                                <i class="nav-icon fas fa-list"></i>
                                 <p>{{ trans('admin.cities_list') }}</p>
                             </a>
                         </li>
@@ -174,7 +174,7 @@
                 </li>
                 <li class="nav-item {{ active_menu('states')[0] }}">
                     <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-flag"></i>
+                        <i class="nav-icon fas fa-eye"></i>
                         <p>
                             {{ trans('admin.states') }}
                             <i class="fas fa-angle-left right"></i>
@@ -183,7 +183,7 @@
                     <ul class="nav nav-treeview" {{ active_menu('states')[1] }}>
                         <li class="nav-item">
                             <a href="{{ adminUrl('states') }}" class="nav-link">
-                                <i class="nav-icon fas fa-flag-checkered"></i>
+                                <i class="nav-icon fas fa-list"></i>
                                 <p>{{ trans('admin.states_list') }}</p>
                             </a>
                         </li>

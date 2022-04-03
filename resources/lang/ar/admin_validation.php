@@ -28,5 +28,5 @@ return [
     'department_name_en' => 'اسم القسم بالانجليزيه مطلوب',
     'department_icon_type' => 'ايقونه القسم يجب ان تكون صوره',
     'department_icon_exe' => 'ايقونه القسم يجب ان تكون (JPEG , JPG , PNG , GIF , BMP)',
-    'department_parent_id' => 'يجب ان يكون رقم القسم',
+    'department_parent' => 'يجب ان يكون رقم القسم',
 ];

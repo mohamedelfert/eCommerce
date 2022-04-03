@@ -5,16 +5,7 @@
             $(document).ready(function () {
                 $('#jstree').jstree({
                     "core": {
-                        'data': [
-                            {"id": "ajson1", "parent": "#", "text": "Node 1"},
-                            {"id": "ajson2", "parent": "#", "text": "Node 2"},
-                            {"id": "ajson3", "parent": "ajson2", "text": "Child 1"},
-                            {"id": "ajson4", "parent": "ajson2", "text": "Child 2"},
-                            {"id": "ajson5", "parent": "#", "text": "Node 3"},
-                            {"id": "ajson6", "parent": "ajson5", "text": "Child 1"},
-                            {"id": "ajson7", "parent": "ajson5", "text": "Child 2"},
-                            {"id": "ajson8", "parent": "ajson5", "text": "Child 3"},
-                        ],
+                        'data': {!! load_department(old('parent')) !!},
                         "themes": {
                             "variant": "large"
                         }
@@ -34,6 +25,18 @@
         </div>
         <!-- /.card-header -->
         <div class="card-body">
+            <div style="margin-bottom: 10px;">
+                <a class="btn btn-primary btn-sm" href="{{adminUrl('departments/create')}}">
+                    <i class="fas fa-plus"></i> {{trans('admin.new_department')}}
+                </a>
+                <a class="btn btn-danger btn-sm" href="{{adminUrl('departments/destroy')}}">
+                    <i class="fas fa-trash"></i> {{trans('admin.delete_department')}}
+                </a>
+                <a class="btn btn-danger btn-sm" href="{{adminUrl('departments/delete-all')}}">
+                    <i class="fas fa-trash-alt"></i> {{trans('admin.delete_all_department')}}
+                </a>
+            </div>
+            <hr>
             <div id="jstree"></div>
         </div>
     </div>

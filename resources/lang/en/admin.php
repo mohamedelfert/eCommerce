@@ -108,4 +108,7 @@ return [
     'edit_department' => 'Edit Department',
     'department_name_ar' => 'Department Name Arabic',
     'department_name_en' => 'Department Name English',
+    'department_description' => 'Department Description',
+    'department_keyword' => 'Department Keyword',
+    'department_icon' => 'Department Icon',
 ];

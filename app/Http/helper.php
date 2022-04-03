@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Admin\UploadController;
+use App\Models\Department;
 use App\Models\Settings;
 use Illuminate\Support\Facades\Request;
 
@@ -27,7 +29,7 @@ if (!function_exists('setting')) {
 if (!function_exists('upload_file')) {
     function upload_file()
     {
-        return new App\Http\Controllers\Admin\UploadController;
+        return new UploadController;
     }
 }
 
@@ -106,5 +108,34 @@ if (!function_exists('validate_image')) {
         } else {
             return 'image|mimes:' . $exe;
         }
+    }
+}
+
+if (!function_exists('load_department')) {
+    function load_department($select = null)
+    {
+        $departments = Department::selectRaw('department_name_' . session('lang') . ' as text')
+            ->selectRaw('id as id')
+            ->selectRaw('parent as parent')
+            ->get(['text', 'id', 'parent']);
+        $department_array = [];
+        foreach ($departments as $department) {
+            $list_array = [];
+            if ($select !== null and $select == $department->id) {
+                $list_array['icon'] = '';
+                $list_array['li_attr'] = '';
+                $list_array['a_attr'] = '';
+                $list_array['children'] = [];
+                $list_array['state'] = [
+                    'opened' => true,
+                    'selected' => true,
+                ];
+            }
+            $list_array['id'] = $department->id;
+            $list_array['text'] = $department->text;
+            $list_array['parent'] = $department->parent !== null ? $department->parent : '#';
+            array_push($department_array, $list_array);
+        }
+        return json_encode($department_array, JSON_UNESCAPED_UNICODE);
     }
 }

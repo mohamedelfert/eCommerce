@@ -28,5 +28,5 @@ return [
     'department_name_en' => 'Department Name English Is Required',
     'department_icon_type' => 'Department Icon Must Be Image',
     'department_icon_exe' => 'Department Icon Must Be (JPEG , JPG , PNG , GIF , BMP)',
-    'department_parent_id' => 'Department Id Must Be Numeric',
+    'department_parent' => 'Department Id Must Be Numeric',
 ];

@@ -45,14 +45,14 @@ class DepartmentController extends Controller
             'icon' => 'sometimes|nullable|' . validate_image(),
             'description' => 'sometimes|nullable',
             'keyword' => 'sometimes|nullable',
-            'parent_id' => 'sometimes|nullable|numeric',
+            'parent' => 'sometimes|nullable|numeric',
         ];
         $validate_msg_ar = [
             'department_name_ar.required' => trans('admin_validation.department_name_ar'),
             'department_name_en.required' => trans('admin_validation.department_name_en'),
             'icon.image' => trans('admin_validation.department_icon_type'),
             'icon.mimes' => trans('admin_validation.department_icon_exe'),
-            'parent_id.numeric' => trans('admin_validation.department_parent_id'),
+            'parent.numeric' => trans('admin_validation.department_parent'),
         ];
         $data = $this->validate($request, $rules, $validate_msg_ar);
 
@@ -60,7 +60,7 @@ class DepartmentController extends Controller
         $data['department_name_en'] = $request->department_name_en;
         $data['description'] = $request->description;
         $data['keyword'] = $request->keyword;
-        $data['parent_id'] = $request->parent_id;
+        $data['parent'] = $request->parent;
         if ($request->hasFile('icon')) {
             $data['icon'] = upload_file()->upload([
                 'file' => 'icon',
@@ -114,14 +114,14 @@ class DepartmentController extends Controller
             'icon' => 'sometimes|nullable|' . validate_image(),
             'description' => 'sometimes|nullable',
             'keyword' => 'sometimes|nullable',
-            'parent_id' => 'sometimes|nullable|numeric',
+            'parent' => 'sometimes|nullable|numeric',
         ];
         $validate_msg_ar = [
             'department_name_ar.required' => trans('admin_validation.department_name_ar'),
             'department_name_en.required' => trans('admin_validation.department_name_en'),
             'icon.image' => trans('admin_validation.department_icon_type'),
             'icon.mimes' => trans('admin_validation.department_icon_exe'),
-            'parent_id.numeric' => trans('admin_validation.department_parent_id'),
+            'parent.numeric' => trans('admin_validation.department_parent'),
         ];
         $data = $this->validate($request, $rules, $validate_msg_ar);
 
@@ -130,13 +130,13 @@ class DepartmentController extends Controller
         $data['department_name_en'] = $request->department_name_en;
         $data['description'] = $request->description;
         $data['keyword'] = $request->keyword;
-        $data['parent_id'] = $request->parent_id;
+        $data['parent'] = $request->parent;
         if ($request->hasFile('icon')) {
             $data['icon'] = upload_file()->upload([
                 'file' => 'icon',
                 'path' => 'departments',
                 'upload_type' => 'single',
-                'delete_file' => '',
+                'delete_file' => Department::find($id)->icon,
             ]);
         }
 
