@@ -112,4 +112,11 @@ return [
     'department_keyword' => 'Department Keyword',
     'department_icon' => 'Department Icon',
     'delete_department' => 'Delete Department',
+    'trademarks' => 'Trademarks',
+    'trademarks_list' => 'Trademarks List',
+    'new_trade_mark' => 'New TradeMark',
+    'edit_trade_mark' => 'Edit TradeMark',
+    'name_ar' => 'Name Arabic',
+    'name_en' => 'Name English',
+    'trade_mark_logo' => 'TradeMark Logo',
 ];

@@ -29,4 +29,9 @@ return [
     'department_icon_type' => 'ايقونه القسم يجب ان تكون صوره',
     'department_icon_exe' => 'ايقونه القسم يجب ان تكون (JPEG , JPG , PNG , GIF , BMP)',
     'department_parent' => 'يجب ان يكون رقم القسم',
+    'name_ar' => 'الاسم عربي مطلوب',
+    'name_en' => 'الاسم انجليزي مطلوب',
+    'logo_required' => 'الشعار مطلوب',
+    'logo_type' => 'يجب ان يكون الشعار صوره',
+    'logo_exe' => 'الشعار يجب ان تكون (JPEG , JPG , PNG , GIF , BMP)',
 ];

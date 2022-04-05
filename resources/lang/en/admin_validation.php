@@ -29,4 +29,9 @@ return [
     'department_icon_type' => 'Department Icon Must Be Image',
     'department_icon_exe' => 'Department Icon Must Be (JPEG , JPG , PNG , GIF , BMP)',
     'department_parent' => 'Department Id Must Be Numeric',
+    'name_ar' => 'Name Arabic Is Required',
+    'name_en' => 'Name English Is Required',
+    'logo_required' => 'Logo Is Required',
+    'logo_type' => 'Logo Must Be Image',
+    'logo_exe' => 'Logo Must Be (JPEG , JPG , PNG , GIF , BMP)',
 ];

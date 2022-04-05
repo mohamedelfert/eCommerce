@@ -109,4 +109,11 @@ return [
     'department_name_ar' => 'اسم القسم عربي',
     'department_name_en' => 'اسم القسم انجليزي',
     'delete_department' => 'حذف القسم',
+    'trademarks' => 'العلامات التجاريه',
+    'trademarks_list' => 'قائمه العلامات التجاريه',
+    'new_trade_mark' => 'علامه تجاريه جديده',
+    'edit_trade_mark' => 'تعديل علامه تجاريه',
+    'name_ar' => 'الاسم عربي',
+    'name_en' => 'الاسم انجليزي',
+    'trade_mark_logo' => 'شعار العلامه التجاريه',
 ];
