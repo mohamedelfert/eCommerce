@@ -1,6 +1,8 @@
 <?php
 return [
     'name_required' => 'Name Is Required',
+    'name_ar_required' => 'Name Arabic Is Required',
+    'name_en_required' => 'Name English Is Required',
     'email_required' => 'E-mail Is Required',
     'email_email' => 'E-mail Should Be Like This ( test@yahoo.com )',
     'email_unique' => 'E-mail Already Exists',
@@ -16,6 +18,9 @@ return [
     'country_name_ar' => 'Country Name Arabic Is Required',
     'country_name_en' => 'Country Name English Is Required',
     'mob' => 'Country Mobile Is Required',
+    'phone_required' => 'Phone Is Required',
+    'phone_unique' => 'Phone Already Exists',
+    'phone_digits' => 'Phone Should Be Like This ( 01100000000 )',
     'code' => 'Country Code Is Required',
     'country_logo_required' => 'Country Logo Is Required',
     'country_logo_type' => 'Country Flag Must Be Image',

@@ -1,6 +1,8 @@
 <?php
 return [
     'name_required' => 'يجب كتابه الاسم',
+    'name_ar_required' => 'يجب كتابه الاسم عربي',
+    'name_en_required' => 'يجب كتابه الاسم انجليزي',
     'email_required' => 'يجب كتابه البريد الالكتروني',
     'email_email' => 'يجب ان يكون البريد الالكتروني -> ( test@yahoo.com )',
     'email_unique' => 'البريد الالكتروني موجود من قبل',
@@ -16,6 +18,9 @@ return [
     'country_name_ar' => 'اسم الدوله عربي مطلوب',
     'country_name_en' => 'اسم الدوله انجليزي مطلوب',
     'mob' => 'رقم الدوله مطلوب',
+    'phone_required' => 'رقم الجوال مطلوب',
+    'phone_unique' => 'رقم الجوال موجود مسبقا',
+    'phone_digits' => 'يجب ان يكون رقم الجوال مثلـ ( 01100000000 )',
     'code' => 'كود الدوله مطلوب',
     'country_logo_required' => 'علم الدوله مطلوب',
     'country_logo_type' => 'علم الدوله يجب ان يكون صوره',

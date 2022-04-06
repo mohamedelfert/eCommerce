@@ -223,6 +223,23 @@
                         </li>
                     </ul>
                 </li>
+                <li class="nav-item {{ active_menu('manufacturers')[0] }}">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-industry"></i>
+                        <p>
+                            {{ trans('admin.manufacturers') }}
+                            <i class="fas fa-angle-left right"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview" {{ active_menu('manufacturers')[1] }}>
+                        <li class="nav-item">
+                            <a href="{{ adminUrl('manufacturers') }}" class="nav-link">
+                                <i class="nav-icon fas fa-list-ol"></i>
+                                <p>{{ trans('admin.manufacturers_list') }}</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
                 <li class="nav-item {{ active_menu('setting')[0] }}">
                     <a href="{{ adminUrl('setting') }}" class="nav-link">
                         <i class="nav-icon fas fa-cogs"></i>

@@ -41,6 +41,10 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
         Route::resource('trademarks', 'TradeMarkController');
         Route::delete('trademarks/destroy/all', 'TradeMarkController@delete_all');
 
+        /**************************** Manufacturers *******************************/
+        Route::resource('manufacturers', 'ManufacturerController');
+        Route::delete('manufacturers/destroy/all', 'ManufacturerController@delete_all');
+
         /**************************** Settings *******************************/
         Route::get('setting', 'SettingsController@setting');
         Route::post('setting', 'SettingsController@setting_save');
