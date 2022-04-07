@@ -21,7 +21,8 @@
                     longitudeInput: $('#longitude'),
                     // radiusInput: $('#us2-radius'),
                     locationNameInput: $('#address')
-                }
+                },
+                enableAutocomplete:true
             });
         </script>
     @endpush

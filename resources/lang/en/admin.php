@@ -136,4 +136,9 @@ return [
     'edit_shipping_company' => 'Edit Company',
     'owner_name' => 'Owner Name',
     'shipping_company_logo' => 'Logo',
+    'malls' => 'Malls',
+    'malls_list' => 'Malls List',
+    'new_mall' => 'New Mall',
+    'edit_mall' => 'Edit Mall',
+    'mall_logo' => 'Logo',
 ];

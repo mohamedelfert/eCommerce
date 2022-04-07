@@ -133,4 +133,9 @@ return [
     'edit_shipping_company' => 'تعديل شركه',
     'owner_name' => 'اسم المالك',
     'shipping_company_logo' => 'الشعار',
+    'malls' => 'المولات',
+    'malls_list' => 'قائمه المولات',
+    'new_mall' => 'مول جديد',
+    'edit_mall' => 'تعديل مول',
+    'mall_logo' => 'شعار المول',
 ];
