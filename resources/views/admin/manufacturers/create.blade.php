@@ -53,7 +53,7 @@
                 </div>
             </div>
             <div class="form-group row">
-                {!! Form::label('name_en',trans('admin.contact_name'),['class'=>'col-sm-2 col-form-label']) !!}
+                {!! Form::label('contact_name',trans('admin.contact_name'),['class'=>'col-sm-2 col-form-label']) !!}
                 <div class="col-sm-10">
                     {!! Form::text('contact_name',old('contact_name'),['class'=>'form-control','id'=>'contact_name','placeholder'=>'اسم المسؤول عن المصنع']) !!}
                 </div>

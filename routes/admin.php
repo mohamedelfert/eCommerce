@@ -53,6 +53,10 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
         Route::resource('malls', 'MallController');
         Route::delete('malls/destroy/all', 'MallController@delete_all');
 
+        /**************************** Colors *******************************/
+        Route::resource('colors', 'ColorController');
+        Route::delete('colors/destroy/all', 'ColorController@delete_all');
+
         /**************************** Settings *******************************/
         Route::get('setting', 'SettingsController@setting');
         Route::post('setting', 'SettingsController@setting_save');

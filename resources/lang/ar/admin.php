@@ -138,4 +138,9 @@ return [
     'new_mall' => 'مول جديد',
     'edit_mall' => 'تعديل مول',
     'mall_logo' => 'شعار المول',
+    'colors' => 'الألوان',
+    'colors_list' => 'قائمه الألوان',
+    'new_color' => 'لون جديد',
+    'edit_color' => 'تعديل لون',
+    'color' => 'اللون',
 ];

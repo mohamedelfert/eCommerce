@@ -141,4 +141,9 @@ return [
     'new_mall' => 'New Mall',
     'edit_mall' => 'Edit Mall',
     'mall_logo' => 'Logo',
+    'colors' => 'Colors',
+    'colors_list' => 'Colors List',
+    'new_color' => 'New Color',
+    'edit_color' => 'Edit Color',
+    'color' => 'Color',
 ];

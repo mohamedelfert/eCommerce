@@ -278,6 +278,23 @@
                         </li>
                     </ul>
                 </li>
+                <li class="nav-item {{ active_menu('colors')[0] }}">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-paint-brush"></i>
+                        <p>
+                            {{ trans('admin.colors') }}
+                            <i class="fas fa-angle-left right"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview" {{ active_menu('colors')[1] }}>
+                        <li class="nav-item">
+                            <a href="{{ adminUrl('colors') }}" class="nav-link">
+                                <i class="nav-icon fas fa-list-ol"></i>
+                                <p>{{ trans('admin.colors_list') }}</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
                 <li class="nav-item {{ active_menu('setting')[0] }}">
                     <a href="{{ adminUrl('setting') }}" class="nav-link">
                         <i class="nav-icon fas fa-cogs"></i>
