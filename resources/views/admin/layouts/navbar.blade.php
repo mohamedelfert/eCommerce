@@ -1,6 +1,7 @@
 <!-- Preloader -->
 <div class="preloader flex-column justify-content-center align-items-center">
-    <img class="animation__shake" src="{{ url('/') }}/design/admin/dist/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60">
+    <img class="animation__shake" src="{{ url('/') }}/design/admin/dist/img/AdminLTELogo.png" alt="AdminLTELogo"
+         height="60" width="60">
 </div>
 
 <!-- Navbar -->
@@ -18,26 +19,26 @@
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
         <!-- Navbar Search -->
-{{--        <li class="nav-item">--}}
-{{--            <a class="nav-link" data-widget="navbar-search" href="#" role="button">--}}
-{{--                <i class="fas fa-search"></i>--}}
-{{--            </a>--}}
-{{--            <div class="navbar-search-block">--}}
-{{--                <form class="form-inline">--}}
-{{--                    <div class="input-group input-group-sm">--}}
-{{--                        <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">--}}
-{{--                        <div class="input-group-append">--}}
-{{--                            <button class="btn btn-navbar" type="submit">--}}
-{{--                                <i class="fas fa-search"></i>--}}
-{{--                            </button>--}}
-{{--                            <button class="btn btn-navbar" type="button" data-widget="navbar-search">--}}
-{{--                                <i class="fas fa-times"></i>--}}
-{{--                            </button>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                </form>--}}
-{{--            </div>--}}
-{{--        </li>--}}
+        {{--        <li class="nav-item">--}}
+        {{--            <a class="nav-link" data-widget="navbar-search" href="#" role="button">--}}
+        {{--                <i class="fas fa-search"></i>--}}
+        {{--            </a>--}}
+        {{--            <div class="navbar-search-block">--}}
+        {{--                <form class="form-inline">--}}
+        {{--                    <div class="input-group input-group-sm">--}}
+        {{--                        <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">--}}
+        {{--                        <div class="input-group-append">--}}
+        {{--                            <button class="btn btn-navbar" type="submit">--}}
+        {{--                                <i class="fas fa-search"></i>--}}
+        {{--                            </button>--}}
+        {{--                            <button class="btn btn-navbar" type="button" data-widget="navbar-search">--}}
+        {{--                                <i class="fas fa-times"></i>--}}
+        {{--                            </button>--}}
+        {{--                        </div>--}}
+        {{--                    </div>--}}
+        {{--                </form>--}}
+        {{--            </div>--}}
+        {{--        </li>--}}
 
         @include('admin.layouts.menu')
 
@@ -54,7 +55,8 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="{{ adminUrl() }}" class="brand-link">
-        <img src="{{ url('/') }}/design/admin/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+        <img src="{{ url('/') }}/design/admin/dist/img/AdminLTELogo.png" alt="AdminLTE Logo"
+             class="brand-image img-circle elevation-3" style="opacity: .8">
         <span class="brand-text font-weight-light">{{ trans('sidbar.brand') }}</span>
     </a>
 
@@ -63,10 +65,12 @@
         <!-- Sidebar user panel (optional) -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
             <div class="image">
-                <img src="{{ url('/') }}/design/admin/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+                <img src="{{ url('/') }}/design/admin/dist/img/user2-160x160.jpg" class="img-circle elevation-2"
+                     alt="User Image">
             </div>
             <div class="info">
-                <a href="#" class="d-block">{{admin()->user()->name}} <br> <small><i class="fa fa-circle text-success"></i> Online</small></a>
+                <a href="#" class="d-block">{{admin()->user()->name}} <br> <small><i
+                            class="fa fa-circle text-success"></i> Online</small></a>
             </div>
         </div>
         <!-- SidebarSearch Form -->
@@ -236,6 +240,23 @@
                             <a href="{{ adminUrl('manufacturers') }}" class="nav-link">
                                 <i class="nav-icon fas fa-list-ol"></i>
                                 <p>{{ trans('admin.manufacturers_list') }}</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item {{ active_menu('companies')[0] }}">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-truck"></i>
+                        <p>
+                            {{ trans('admin.companies') }}
+                            <i class="fas fa-angle-left right"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview" {{ active_menu('companies')[1] }}>
+                        <li class="nav-item">
+                            <a href="{{ adminUrl('companies') }}" class="nav-link">
+                                <i class="nav-icon fas fa-list-ol"></i>
+                                <p>{{ trans('admin.companies_list') }}</p>
                             </a>
                         </li>
                     </ul>

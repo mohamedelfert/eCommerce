@@ -130,4 +130,10 @@ return [
     'twitter' => 'Twitter',
     'website' => 'Website',
     'manufacturer_logo' => 'Manufacturer Logo',
+    'companies' => 'Shipping Companies',
+    'companies_list' => 'Shipping Companies List',
+    'new_shipping_company' => 'New Company',
+    'edit_shipping_company' => 'Edit Company',
+    'owner_name' => 'Owner Name',
+    'shipping_company_logo' => 'Logo',
 ];

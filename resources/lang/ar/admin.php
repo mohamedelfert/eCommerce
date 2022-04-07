@@ -127,4 +127,10 @@ return [
     'twitter' => 'تويتر',
     'website' => 'الموقع الإلكتروني',
     'manufacturer_logo' => 'شعار المصنع',
+    'companies' => 'شركات الشحن',
+    'companies_list' => 'قائمه شركات الشحن',
+    'new_shipping_company' => 'شركه جديده',
+    'edit_shipping_company' => 'تعديل شركه',
+    'owner_name' => 'اسم المالك',
+    'shipping_company_logo' => 'الشعار',
 ];
