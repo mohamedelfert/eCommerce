@@ -39,4 +39,6 @@ return [
     'logo_required' => 'Logo Is Required',
     'logo_type' => 'Logo Must Be Image',
     'logo_exe' => 'Logo Must Be (JPEG , JPG , PNG , GIF , BMP)',
+    'department_id_required' => 'Department Id Is Required',
+    'is_public_required' => 'Public Size Id Is Required',
 ];

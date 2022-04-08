@@ -146,4 +146,11 @@ return [
     'new_color' => 'New Color',
     'edit_color' => 'Edit Color',
     'color' => 'Color',
+    'sizes' => 'Sizes',
+    'sizes_list' => 'Sizes List',
+    'new_size' => 'New Size',
+    'edit_size' => 'Edit Size',
+    'is_public' => 'Public Size',
+    'no' => 'No',
+    'yes' => 'Yes',
 ];

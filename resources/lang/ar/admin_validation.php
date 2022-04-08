@@ -39,4 +39,6 @@ return [
     'logo_required' => 'الشعار مطلوب',
     'logo_type' => 'يجب ان يكون الشعار صوره',
     'logo_exe' => 'الشعار يجب ان تكون (JPEG , JPG , PNG , GIF , BMP)',
+    'department_id_required' => 'Id القسم مطلوب',
+    'is_public_required' => 'القياس العام مطلوب',
 ];
