@@ -150,4 +150,8 @@ return [
     'is_public' => 'القياس العام',
     'no' => 'لا',
     'yes' => 'نعم',
+    'weights' => 'الأوزان',
+    'weights_list' => 'قائمه الأوزان',
+    'new_weight' => 'وزن جديد',
+    'edit_weight' => 'تعديل وزن',
 ];

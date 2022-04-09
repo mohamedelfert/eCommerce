@@ -61,6 +61,10 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
         Route::resource('sizes', 'SizeController');
         Route::delete('sizes/destroy/all', 'SizeController@delete_all');
 
+        /**************************** Weights *******************************/
+        Route::resource('weights', 'WeightController');
+        Route::delete('weights/destroy/all', 'WeightController@delete_all');
+
         /**************************** Settings *******************************/
         Route::get('setting', 'SettingsController@setting');
         Route::post('setting', 'SettingsController@setting_save');

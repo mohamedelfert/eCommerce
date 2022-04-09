@@ -153,4 +153,8 @@ return [
     'is_public' => 'Public Size',
     'no' => 'No',
     'yes' => 'Yes',
+    'weights' => 'Weights',
+    'weights_list' => 'Weights List',
+    'new_weight' => 'New Weight',
+    'edit_weight' => 'Edit Weight',
 ];

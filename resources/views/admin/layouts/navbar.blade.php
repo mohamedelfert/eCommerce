@@ -297,7 +297,7 @@
                 </li>
                 <li class="nav-item {{ active_menu('sizes')[0] }}">
                     <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-adjust"></i>
+                        <i class="nav-icon fas fa-info-circle"></i>
                         <p>
                             {{ trans('admin.sizes') }}
                             <i class="fas fa-angle-left right"></i>
@@ -308,6 +308,23 @@
                             <a href="{{ adminUrl('sizes') }}" class="nav-link">
                                 <i class="nav-icon fas fa-list-ol"></i>
                                 <p>{{ trans('admin.sizes_list') }}</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item {{ active_menu('weights')[0] }}">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-weight"></i>
+                        <p>
+                            {{ trans('admin.weights') }}
+                            <i class="fas fa-angle-left right"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview" {{ active_menu('weights')[1] }}>
+                        <li class="nav-item">
+                            <a href="{{ adminUrl('weights') }}" class="nav-link">
+                                <i class="nav-icon fas fa-list-ol"></i>
+                                <p>{{ trans('admin.weights_list') }}</p>
                             </a>
                         </li>
                     </ul>
