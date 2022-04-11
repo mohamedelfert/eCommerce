@@ -329,6 +329,23 @@
                         </li>
                     </ul>
                 </li>
+                <li class="nav-item {{ active_menu('products')[0] }}">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-tags"></i>
+                        <p>
+                            {{ trans('admin.products') }}
+                            <i class="fas fa-angle-left right"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview" {{ active_menu('products')[1] }}>
+                        <li class="nav-item">
+                            <a href="{{ adminUrl('products') }}" class="nav-link">
+                                <i class="nav-icon fas fa-list-ol"></i>
+                                <p>{{ trans('admin.products_list') }}</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
                 <li class="nav-item {{ active_menu('setting')[0] }}">
                     <a href="{{ adminUrl('setting') }}" class="nav-link">
                         <i class="nav-icon fas fa-cogs"></i>

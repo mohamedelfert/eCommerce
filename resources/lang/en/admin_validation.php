@@ -22,6 +22,7 @@ return [
     'phone_unique' => 'Phone Already Exists',
     'phone_digits' => 'Phone Should Be Like This ( 01100000000 )',
     'code' => 'Country Code Is Required',
+    'currency' => 'Country Currency Is Required',
     'country_logo_required' => 'Country Logo Is Required',
     'country_logo_type' => 'Country Flag Must Be Image',
     'country_logo_exe' => 'Country Flag Must Be (JPEG , JPG , PNG , GIF , BMP)',

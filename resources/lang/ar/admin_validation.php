@@ -22,6 +22,7 @@ return [
     'phone_unique' => 'رقم الجوال موجود مسبقا',
     'phone_digits' => 'يجب ان يكون رقم الجوال مثلـ ( 01100000000 )',
     'code' => 'كود الدوله مطلوب',
+    'currency' => 'عمله الدوله مطلوبه',
     'country_logo_required' => 'علم الدوله مطلوب',
     'country_logo_type' => 'علم الدوله يجب ان يكون صوره',
     'country_logo_exe' => 'علم الدوله يجب ان يكون (JPEG , JPG , PNG , GIF , BMP)',

@@ -65,6 +65,10 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
         Route::resource('weights', 'WeightController');
         Route::delete('weights/destroy/all', 'WeightController@delete_all');
 
+        /**************************** Products *******************************/
+        Route::resource('products', 'ProductController');
+        Route::delete('products/destroy/all', 'ProductController@delete_all');
+
         /**************************** Settings *******************************/
         Route::get('setting', 'SettingsController@setting');
         Route::post('setting', 'SettingsController@setting_save');

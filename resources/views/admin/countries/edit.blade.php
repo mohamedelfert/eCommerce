@@ -38,6 +38,12 @@
                 </div>
             </div>
             <div class="form-group row">
+                {!! Form::label('currency',trans('admin.currency'),['class'=>'col-sm-2 col-form-label']) !!}
+                <div class="col-sm-10">
+                    {!! Form::text('currency',$country->currency,['class'=>'form-control','id'=>'currency','placeholder'=>'Currency']) !!}
+                </div>
+            </div>
+            <div class="form-group row">
                 {!! Form::label('logo',trans('admin.country_logo'),['class'=>'col-sm-2 col-form-label']) !!}
                 <div class="col-sm-10">
                     {!! Form::file('logo',['class'=>'form-control']) !!}

@@ -45,6 +45,7 @@ class CountryController extends Controller
             'country_name_en' => 'required',
             'mob' => 'required',
             'code' => 'required',
+            'currency' => 'required',
             'logo' => 'required|' . validate_image(),
         ];
         $validate_msg_ar = [
@@ -52,6 +53,7 @@ class CountryController extends Controller
             'country_name_en.required' => trans('admin_validation.country_name_en'),
             'mob.required' => trans('admin_validation.mob'),
             'code.required' => trans('admin_validation.code'),
+            'currency.required' => trans('admin_validation.currency'),
             'logo.required' => trans('admin_validation.country_logo_required'),
             'logo.image' => trans('admin_validation.country_logo_type'),
             'logo.mimes' => trans('admin_validation.country_logo_exe'),
@@ -113,6 +115,7 @@ class CountryController extends Controller
             'country_name_en' => 'required',
             'mob' => 'required',
             'code' => 'required',
+            'currency' => 'required',
             'logo' => 'required|sometimes|nullable|' . validate_image(),
         ];
         $validate_msg_ar = [
@@ -120,6 +123,7 @@ class CountryController extends Controller
             'country_name_en.required' => trans('admin_validation.country_name_en'),
             'mob.required' => trans('admin_validation.mob'),
             'code.required' => trans('admin_validation.code'),
+            'currency.required' => trans('admin_validation.currency'),
             'logo.required' => trans('admin_validation.country_logo_required'),
             'logo.image' => trans('admin_validation.country_logo_type'),
             'logo.mimes' => trans('admin_validation.country_logo_exe'),
