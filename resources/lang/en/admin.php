@@ -186,4 +186,5 @@ return [
     'refused' => 'Refused',
     'active' => 'Active',
     'reason' => 'Reason',
+    'dropzoneMessage' => 'Click here to upload files or drag and drop the files to be uploaded here',
 ];

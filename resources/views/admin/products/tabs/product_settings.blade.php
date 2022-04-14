@@ -64,14 +64,14 @@
         <div class="form-group row">
             {!! Form::label('product_status',trans('admin.product_status'),['class'=>'col-sm-2 col-form-label']) !!}
             <div class="col-sm-10">
-                {!! Form::select('product_status[]',
+                {!! Form::select('product_status',
                 ['pending'=>trans('admin.pending'),'refused'=>trans('admin.refused'), 'active'=>trans('admin.active')],
-                old('product_status'),['class'=>'custom-select rounded-0 js-example-placeholder-multiple js-states form-control',
-                'id'=>'product_status','multiple'=>'multiple']) !!}
+                old('product_status'),['class'=>'custom-select rounded-0 status',
+                'id'=>'product_status']) !!}
             </div>
         </div>
 
-        <div class="form-group row">
+        <div class="form-group row reason {{ $product->status != 'refused' ? 'd-none' : '' }}">
             {!! Form::label('reason',trans('admin.reason'),['class'=>'col-sm-2 col-form-label']) !!}
             <div class="col-sm-10">
                 {!! Form::textarea('reason',$product->reason,

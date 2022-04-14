@@ -68,6 +68,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
         /**************************** Products *******************************/
         Route::resource('products', 'ProductController');
         Route::delete('products/destroy/all', 'ProductController@delete_all');
+        Route::post('upload/image/{product_id}', 'ProductController@upload_file');
 
         /**************************** Settings *******************************/
         Route::get('setting', 'SettingsController@setting');

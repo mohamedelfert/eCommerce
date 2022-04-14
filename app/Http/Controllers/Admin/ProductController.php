@@ -32,7 +32,7 @@ class ProductController extends Controller
             'content' => '',
             'photo' => '',
             'weight' => '',
-            ]);
+        ]);
         if (!empty($product)) {
             return redirect(adminUrl('products/' . $product->id . '/edit'));
         }
@@ -142,5 +142,18 @@ class ProductController extends Controller
         }
         toastr()->error(trans('admin_validation.delete'));
         return redirect()->back();
+    }
+
+    public function upload_file($id)
+    {
+        if (request()->hasFile('file')) {
+            return upload_file()->upload([
+                'file' => 'file',
+                'path' => 'products/' . $id,
+                'upload_type' => 'files',
+                'file_type' => 'product',
+                'relation_id' => $id,
+            ]);
+        }
     }
 }

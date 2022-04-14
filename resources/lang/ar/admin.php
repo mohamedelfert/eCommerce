@@ -178,9 +178,10 @@ return [
     'offer_price' => 'سعر العرض',
     'offer_start_at' => 'بداية العرض',
     'offer_end_at' => 'نهاية العرض',
-    'product_status' => 'الحاله',
+    'product_status' => 'الحالة',
     'pending' => 'منتظر',
     'refused' => 'مرفوض',
     'active' => 'مفعل',
     'reason' => 'سبب الرفض',
+    'dropzoneMessage' => 'اضغط هنا لرفع الملفات او قم بسحب وإفلات الملفات المراد رفعها هنا',
 ];
