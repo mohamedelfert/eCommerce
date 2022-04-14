@@ -63,6 +63,9 @@
         <script src="{{ url('/design/admin/jstree/dist/jstree.js') }}"></script>
         <script src="{{ url('/design/admin/jstree/jstree.wholerow.js') }}"></script>
         <script src="{{ url('/design/admin/jstree/jstree.checkbox.js') }}"></script>
+        <!-- Datepicker -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/locales/bootstrap-datepicker.ar.min.js"></script>
 
         @stack('js')
         @stack('css')

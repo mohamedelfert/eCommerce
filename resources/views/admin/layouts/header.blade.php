@@ -30,8 +30,16 @@
             <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
             <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600&display=swap" rel="stylesheet">
             <style>
-                html,body{
+                html,body {
                     font-family: 'Cairo', sans-serif;
+                }
+                .navbar-nav.ml-auto {
+                    margin-left: 0 !important;
+                }
+                [class*=sidebar-dark] .btn-sidebar, [class*=sidebar-dark] .form-control-sidebar {
+                    background-color: #3f474e;
+                    border: 1px solid #56606a;
+                    color: #fff;
                 }
             </style>
         @endif
@@ -43,6 +51,8 @@
         <link rel="stylesheet" href="{{ url('/design/admin/plugins/summernote/summernote-bs4.min.css') }}">
         <!-- jstree -->
         <link rel="stylesheet" href="{{ url('/design/admin/jstree/dist/themes/default/style.css') }}">
+        <!-- Datepicker -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
 
         <!-- site icon -->
         <link rel="icon" href="{{ Storage::url(setting()->icon) }}">

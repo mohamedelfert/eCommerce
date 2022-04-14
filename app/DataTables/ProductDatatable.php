@@ -20,9 +20,9 @@ class ProductDatatable extends DataTable
     {
         return datatables()
             ->eloquent($query)
-            ->addColumn('checkbox', 'admin.weights.btn.checkbox')
-            ->addColumn('edit', 'admin.weights.btn.edit')
-            ->addColumn('delete', 'admin.weights.btn.delete')
+            ->addColumn('checkbox', 'admin.products.btn.checkbox')
+            ->addColumn('edit', 'admin.products.btn.edit')
+            ->addColumn('delete', 'admin.products.btn.delete')
             ->rawColumns(['checkbox', 'edit', 'delete']);
     }
 

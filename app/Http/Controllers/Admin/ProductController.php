@@ -27,8 +27,15 @@ class ProductController extends Controller
      */
     public function create()
     {
-        $title = trans('admin.new_product');
-        return view('admin.products.create', compact('title'));
+        $product = Product::create([
+            'title' => '',
+            'content' => '',
+            'photo' => '',
+            'weight' => '',
+            ]);
+        if (!empty($product)) {
+            return redirect(adminUrl('products/' . $product->id . '/edit'));
+        }
     }
 
     /**
@@ -77,8 +84,9 @@ class ProductController extends Controller
     public function edit($id)
     {
         $product = Product::findOrFail($id);
-        $title = trans('admin.edit_product');
-        return view('admin.products.edit', compact('title', 'product'));
+        return view('admin.products.product',
+            ['title' => trans('admin.create_or_edit_product', ['title' => $product->title]),
+                'product' => $product]);
     }
 
     /**
