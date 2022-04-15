@@ -32,13 +32,13 @@ class UploadController extends Controller
                 'size' => $size,
                 'file' => $hashName,
                 'path' => $data['path'],
-                'full_file' => $data['path'] . $hashName,
+                'full_file' => $data['path'] . '/' . $hashName,
                 'mime_type' => $mimeType,
                 'file_type' => $data['file_type'],
                 'relation_id' => $data['relation_id'],
             ]);
 
-            return $data['path'] . $hashName;
+            return $data['path'] . '/' . $hashName;
         }
     }
 }

@@ -12,4 +12,8 @@ class Product extends Model
 
     protected $casts = ['created_at' => 'datetime:Y-m-d H:m:s', 'updated_at' => 'datetime:Y-m-d H:m:s'];
 
+    public function files()
+    {
+        return $this->hasMany(File::class,'relation_id','id')->where('file_type','product');
+    }
 }

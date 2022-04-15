@@ -2,50 +2,63 @@
 @section('content')
 
     @push('css')
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" />
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/min/dropzone.min.css" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/min/dropzone.min.css"/>
     @endpush
     @push('js')
-        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/min/dropzone.min.js"></script>
+        <script type="text/javascript"
+                src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+        <script type="text/javascript"
+                src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/min/dropzone.min.js"></script>
         <script type="text/javascript">
             $(".js-example-placeholder-multiple").select2({
                 placeholder: "Select Status"
             });
-            $( function() {
-                $( ".datepicker" ).datepicker({
-                    rtl:'{{ session('lang') == 'ar' ? true : false }}',
-                    language:'{{ session('lang') }}',
-                    format:'yyyy-mm-dd',
-                    autoClose:true,
-                    todayBtn:true,
-                    clearBtn:true,
+            $(function () {
+                $(".datepicker").datepicker({
+                    rtl: '{{ session('lang') == 'ar' ? true : false }}',
+                    language: '{{ session('lang') }}',
+                    format: 'yyyy-mm-dd',
+                    autoClose: true,
+                    todayBtn: true,
+                    clearBtn: true,
                 });
             });
 
             // for reason textarea
-            $(document).on('change','.status',function(){
-               let status = $('.status option:selected').val();
-               if (status === 'refused'){
-                   $('.reason').removeClass('d-none');
-               }else{
-                   $('.reason').addClass('d-none');
-               }
+            $(document).on('change', '.status', function () {
+                let status = $('.status option:selected').val();
+                if (status === 'refused') {
+                    $('.reason').removeClass('d-none');
+                } else {
+                    $('.reason').addClass('d-none');
+                }
             });
 
             // for dropzone
             Dropzone.autoDiscover = false;
-            $(document).ready(function(){
+            $(document).ready(function () {
                 $('#dropzoneFileUpload').dropzone({
-                    url:'{{ adminUrl('upload/image/'.$product->id) }}',
-                    paramName:'file',
-                    uploadMultiple:false,
-                    maxFiles:15,
-                    maxFilesize:2, // MB
-                    acceptedFiles:'image/*',
-                    dictDefaultMessage:'{{ trans('admin.dropzoneMessage') }}',
-                    params:{
-                        _token:'{{ csrf_token() }}'
+                    url: '{{ adminUrl('upload/image/'.$product->id) }}',
+                    paramName: 'file',
+                    uploadMultiple: false,
+                    maxFiles: 15,
+                    maxFilesize: 2, // MB
+                    acceptedFiles: 'image/*',
+                    dictDefaultMessage: '{{ trans('admin.dropzoneMessage') }}',
+                    params: {
+                        _token: '{{ csrf_token() }}'
+                    }, init: function () {
+                        @foreach($product->files()->get() as $file)
+                        var mockFile = {
+                            name: '{{ $file->name }}',
+                            size: '{{ $file->size }}',
+                            type: '{{ $file->mime_type }}'
+                        };
+                        // this.emit('addedfile', mockFile); OR
+                        this.options.addedfile.call(this, mockFile);
+                        this.options.thumbnail.call(this, mockFile, '{{ url('storage/'. $file->full_file) }}');
+                        @endforeach
                     }
                 });
             });
@@ -58,7 +71,7 @@
             <div style="margin-bottom: 10px;">
                 <a type="button" class="btn btn-primary btn-sm" style="margin-left: 15px"
                    href="{{ adminUrl('products') }}">
-                    <i class="fa fa-undo">  رجوع للمنتجات </i>
+                    <i class="fa fa-undo"> رجوع للمنتجات </i>
                 </a>
             </div>
         </div>
