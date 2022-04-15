@@ -29,7 +29,7 @@ class ProductController extends Controller
     {
         $product = Product::create([
             'title' => '',
-            'content' => '',
+            'description' => '',
             'photo' => '',
             'weight' => '',
         ]);
@@ -48,16 +48,16 @@ class ProductController extends Controller
     {
         $rules = [
             'title' => 'required',
-            'content' => 'required',
+            'description' => 'required',
         ];
         $validate_msg_ar = [
             'title.required' => trans('admin_validation.title_required'),
-            'content.required' => trans('admin_validation.content_required'),
+            'description.required' => trans('admin_validation.description_required'),
         ];
         $data = $this->validate($request, $rules, $validate_msg_ar);
 
         $data['title'] = $request->title;
-        $data['content'] = $request->content;
+        $data['description'] = $request->description;
 
         Product::create($data);
         toastr()->success(trans('admin_validation.success'));
@@ -100,18 +100,18 @@ class ProductController extends Controller
     {
         $rules = [
             'title' => 'required|unique:products,title,' . $id,
-            'content' => 'required|unique:products,content,' . $id,
+            'description' => 'required|unique:products,description,' . $id,
 
         ];
         $validate_msg_ar = [
             'title.required' => trans('admin_validation.title_required'),
-            'content.required' => trans('admin_validation.content_required'),
+            'description.required' => trans('admin_validation.description_required'),
         ];
         $data = $this->validate($request, $rules, $validate_msg_ar);
 
         $product = Product::findOrFail($id);
         $data['title'] = $request->title;
-        $data['content'] = $request->content;
+        $data['description'] = $request->description;
 
         $product->update($data);
         toastr()->success(trans('admin_validation.update'));
@@ -147,13 +147,21 @@ class ProductController extends Controller
     public function upload_file($id)
     {
         if (request()->hasFile('file')) {
-            return upload_file()->upload([
+            $file_id = upload_file()->upload([
                 'file' => 'file',
                 'path' => 'products/' . $id,
                 'upload_type' => 'files',
                 'file_type' => 'product',
                 'relation_id' => $id,
             ]);
+            return response(['status' => true, 'id' => $file_id], 200);
+        }
+    }
+
+    public function delete_file(Request $request)
+    {
+        if (request()->has('id')) {
+            upload_file()->delete($request->id);
         }
     }
 }

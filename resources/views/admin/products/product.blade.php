@@ -46,19 +46,43 @@
                     maxFilesize: 2, // MB
                     acceptedFiles: 'image/*',
                     dictDefaultMessage: '{{ trans('admin.dropzoneMessage') }}',
+                    dictRemoveFile: '{{ trans('admin.dropzoneRemoveFile') }}',
+                    addRemoveLinks: true,
                     params: {
                         _token: '{{ csrf_token() }}'
-                    }, init: function () {
+                    },
+                    removedfile: function (file) {
+                        $.ajax({
+                            url: '{{ adminUrl('delete/image') }}',
+                            dataType: 'json',
+                            type: 'POST',
+                            data: {_token: '{{ csrf_token() }}', id: file.fid}
+                        })
+                        var mock;
+                        return (mock = file.previewElement) != null ? mock.parentNode.removeChild(file.previewElement) : void 0;
+                    },
+                    init: function () {
                         @foreach($product->files()->get() as $file)
                         var mockFile = {
                             name: '{{ $file->name }}',
                             size: '{{ $file->size }}',
-                            type: '{{ $file->mime_type }}'
+                            type: '{{ $file->mime_type }}',
+                            fid: '{{ $file->id }}'
                         };
                         // this.emit('addedfile', mockFile); OR
                         this.options.addedfile.call(this, mockFile);
-                        this.options.thumbnail.call(this, mockFile, '{{ url('storage/'. $file->full_file) }}');
+                        this.options.thumbnail.call(this, mockFile, '{{ url('storage/'. $file->full_path) }}');
+                        this.emit('complete', mockFile);
                         @endforeach
+
+                        this.on('sending', function (file, xhr, formData) {
+                            formData.append('fid', '');
+                            file.fid = '';
+                        });
+
+                        this.on('success', function (file, response) {
+                            file.fid = response.id;
+                        });
                     }
                 });
             });

@@ -164,7 +164,7 @@ return [
     'new_product' => 'New Product',
     'edit_product' => 'Edit Product',
     'product_title' => 'Title',
-    'product_content' => 'Content',
+    'product_description' => 'Description',
     'product_price' => 'Price',
     'product_info' => 'Information',
     'product_settings' => 'Settings',
@@ -187,4 +187,5 @@ return [
     'active' => 'Active',
     'reason' => 'Reason',
     'dropzoneMessage' => 'Click here to upload files or drag and drop the files to be uploaded here',
+    'dropzoneRemoveFile' => 'Remove File',
 ];

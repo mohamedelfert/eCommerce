@@ -19,7 +19,7 @@ class CreateFilesTable extends Migration
             $table->string('size');
             $table->string('file');
             $table->string('path');
-            $table->string('full_file');
+            $table->string('full_path');
             $table->string('mime_type');
             $table->string('file_type');
             $table->integer('relation_id');

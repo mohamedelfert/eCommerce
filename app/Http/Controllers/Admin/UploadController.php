@@ -32,13 +32,22 @@ class UploadController extends Controller
                 'size' => $size,
                 'file' => $hashName,
                 'path' => $data['path'],
-                'full_file' => $data['path'] . '/' . $hashName,
+                'full_path' => $data['path'] . '/' . $hashName,
                 'mime_type' => $mimeType,
                 'file_type' => $data['file_type'],
                 'relation_id' => $data['relation_id'],
             ]);
 
-            return $data['path'] . '/' . $hashName;
+            return $add->id;
+        }
+    }
+
+    public function delete($id)
+    {
+        $file = File::find($id);
+        if (!empty($file)) {
+            Storage::delete($file->full_path);
+            $file->delete();
         }
     }
 }

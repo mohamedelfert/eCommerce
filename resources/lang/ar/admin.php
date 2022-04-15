@@ -161,7 +161,7 @@ return [
     'new_product' => 'منتج جديد',
     'edit_product' => 'تعديل منتج',
     'product_title' => 'عنوان المنتج',
-    'product_content' => 'وصف المنتج',
+    'product_description' => 'وصف المنتج',
     'product_price' => 'السعر',
     'product_info' => 'معلومات المنتج',
     'product_settings' => 'اعدادات المنتج',
@@ -184,4 +184,5 @@ return [
     'active' => 'مفعل',
     'reason' => 'سبب الرفض',
     'dropzoneMessage' => 'اضغط هنا لرفع الملفات او قم بسحب وإفلات الملفات المراد رفعها هنا',
+    'dropzoneRemoveFile' => 'حذف الملف',
 ];

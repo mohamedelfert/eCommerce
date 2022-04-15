@@ -10,9 +10,9 @@
         </div>
 
         <div class="form-group row">
-            {!! Form::label('product_content',trans('admin.product_content'),['class'=>'col-sm-2 col-form-label']) !!}
+            {!! Form::label('description',trans('admin.product_description'),['class'=>'col-sm-2 col-form-label']) !!}
             <div class="col-sm-10">
-                {!! Form::textarea('product_content',$product->content,['class'=>'form-control','id'=>'product_content','placeholder'=>'Product Content']) !!}
+                {!! Form::textarea('description',$product->description,['class'=>'form-control','id'=>'description','placeholder'=>'Product Description']) !!}
             </div>
         </div>
 
