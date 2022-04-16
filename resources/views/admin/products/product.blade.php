@@ -4,6 +4,13 @@
     @push('css')
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css"/>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/min/dropzone.min.css"/>
+        <style>
+            .dz-image img{
+                width: 100%;
+                height: 100%;
+                border-radius: 50%;
+            }
+        </style>
     @endpush
     @push('js')
         <script type="text/javascript"
@@ -14,6 +21,8 @@
             $(".js-example-placeholder-multiple").select2({
                 placeholder: "Select Status"
             });
+
+            // for datepicker
             $(function () {
                 $(".datepicker").datepicker({
                     rtl: '{{ session('lang') == 'ar' ? true : false }}',
@@ -37,6 +46,7 @@
 
             // for dropzone
             Dropzone.autoDiscover = false;
+            // Other Product Photos
             $(document).ready(function () {
                 $('#dropzoneFileUpload').dropzone({
                     url: '{{ adminUrl('upload/image/'.$product->id) }}',
@@ -74,6 +84,56 @@
                         this.options.thumbnail.call(this, mockFile, '{{ url('storage/'. $file->full_path) }}');
                         this.emit('complete', mockFile);
                         @endforeach
+
+                        this.on('sending', function (file, xhr, formData) {
+                            formData.append('fid', '');
+                            file.fid = '';
+                        });
+
+                        this.on('success', function (file, response) {
+                            file.fid = response.id;
+                        });
+                    }
+                });
+            });
+
+            // Main Product Photo
+            $(document).ready(function () {
+                $('#mainPhoto').dropzone({
+                    url: '{{ adminUrl('upload/product/image/'.$product->id) }}',
+                    paramName: 'file',
+                    uploadMultiple: false,
+                    maxFiles: 1,
+                    maxFilesize: 3, // MB
+                    acceptedFiles: 'image/*',
+                    dictDefaultMessage: '{{ trans('admin.dropzoneMessage') }}',
+                    dictRemoveFile: '{{ trans('admin.dropzoneRemoveFile') }}',
+                    addRemoveLinks: true,
+                    params: {
+                        _token: '{{ csrf_token() }}'
+                    },
+                    removedfile: function (file) {
+                        $.ajax({
+                            url: '{{ adminUrl('delete/product/image/' . $product->id) }}',
+                            dataType: 'json',
+                            type: 'POST',
+                            data: {_token: '{{ csrf_token() }}'}
+                        })
+                        var mock;
+                        return (mock = file.previewElement) != null ? mock.parentNode.removeChild(file.previewElement) : void 0;
+                    },
+                    init: function () {
+                        @if(!empty($product->photo))
+                            var mockFile = {
+                                name: '{{ $product->title }}',
+                                size: '',
+                                type: '',
+                            };
+                            // this.emit('addedfile', mockFile); OR
+                            this.options.addedfile.call(this, mockFile);
+                            this.options.thumbnail.call(this, mockFile, '{{ url('storage/'. $product->photo) }}');
+                            this.emit('complete', mockFile);
+                        @endif
 
                         this.on('sending', function (file, xhr, formData) {
                             formData.append('fid', '');

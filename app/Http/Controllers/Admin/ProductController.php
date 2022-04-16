@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
@@ -142,6 +143,29 @@ class ProductController extends Controller
         }
         toastr()->error(trans('admin_validation.delete'));
         return redirect()->back();
+    }
+
+    public function upload_main_photo($id)
+    {
+        $product = Product::find($id);
+        if (request()->hasFile('file')) {
+            $product->update([
+                'photo' => upload_file()->upload([
+                    'file' => 'file',
+                    'path' => 'products/' . $id,
+                    'upload_type' => 'single',
+                    'delete_file' => Product::find($id)->photo,
+                ])
+            ]);
+            return response(['status' => true, 'photo' => $product->photo], 200);
+        }
+    }
+
+    public function delete_main_photo($id)
+    {
+        $product = Product::findOrFail($id);
+        Storage::delete($product->photo);
+        $product->update(['photo' => '']);
     }
 
     public function upload_file($id)

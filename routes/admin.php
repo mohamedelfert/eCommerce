@@ -70,6 +70,8 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
         Route::delete('products/destroy/all', 'ProductController@delete_all');
         Route::post('upload/image/{product_id}', 'ProductController@upload_file');
         Route::post('delete/image', 'ProductController@delete_file');
+        Route::post('upload/product/image/{product_id}', 'ProductController@upload_main_photo');
+        Route::post('delete/product/image/{product_id}', 'ProductController@delete_main_photo');
 
         /**************************** Settings *******************************/
         Route::get('setting', 'SettingsController@setting');

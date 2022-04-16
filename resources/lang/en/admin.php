@@ -188,4 +188,6 @@ return [
     'reason' => 'Reason',
     'dropzoneMessage' => 'Click here to upload files or drag and drop the files to be uploaded here',
     'dropzoneRemoveFile' => 'Remove File',
+    'product_photo' => 'Main Photo',
+    'product_photos' => 'Other Photos & Media',
 ];
