@@ -4,28 +4,28 @@
 
         <div class="row" style="margin-bottom: 20px">
             <div class="col">
-                {!! Form::label('product_price',trans('admin.product_price'),['class'=>'col-sm-4 col-form-label']) !!}
+                {!! Form::label('product_price',trans('admin.product_price'),['class'=>'col-sm-5 col-form-label']) !!}
                 <div class="col-sm-10">
                     {!! Form::text('product_price',$product->price,
                     ['class'=>'form-control','id'=>'product_price','placeholder'=>'Product Price']) !!}
                 </div>
             </div>
             <div class="col">
-                {!! Form::label('stock',trans('admin.stock'),['class'=>'col-sm-4 col-form-label']) !!}
+                {!! Form::label('stock',trans('admin.stock'),['class'=>'col-sm-5 col-form-label']) !!}
                 <div class="col-sm-10">
                     {!! Form::text('stock',$product->stock,
                     ['class'=>'form-control','id'=>'stock','placeholder'=>'Stock']) !!}
                 </div>
             </div>
             <div class="col">
-                {!! Form::label('start_at',trans('admin.start_at'),['class'=>'col-sm-4 col-form-label']) !!}
+                {!! Form::label('start_at',trans('admin.start_at'),['class'=>'col-sm-5 col-form-label']) !!}
                 <div class="col-sm-10">
                     {!! Form::text('start_at',$product->start_at,
                     ['class'=>'form-control datepicker','id'=>'start_at']) !!}
                 </div>
             </div>
             <div class="col">
-                {!! Form::label('end_at',trans('admin.end_at'),['class'=>'col-sm-4 col-form-label']) !!}
+                {!! Form::label('end_at',trans('admin.end_at'),['class'=>'col-sm-5 col-form-label']) !!}
                 <div class="col-sm-10">
                     {!! Form::text('end_at',$product->end_at,
                     ['class'=>'form-control datepicker','id'=>'end_at']) !!}

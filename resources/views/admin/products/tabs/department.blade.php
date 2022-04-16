@@ -19,9 +19,21 @@
             for(i = 0, j = data.selected.length; i < j ; i++){
                 r.push(data.instance.get_node(data.selected[i]).id);
             }
+            var department_id = r.join(', ');
             if(r.join(', ') !== ''){
-                $('.department_id').val(r.join(', '));
+                $('.department_id').val(department_id);
             }
+
+            // for load size and weight section after select department
+            $.ajax({
+                url:'{{ adminUrl('load/weight/size') }}',
+                dataType:'html',
+                type:'POST',
+                data: {_token: '{{ csrf_token() }}',dep_id:department_id},
+                success:function(data){
+                    $('#size_weight').html(data);
+                }
+            });
         });
     </script>
 @endpush

@@ -190,4 +190,8 @@ return [
     'dropzoneRemoveFile' => 'Remove File',
     'product_photo' => 'Main Photo',
     'product_photos' => 'Other Photos & Media',
+    'size_id' => 'Size Type',
+    'size' => 'Size',
+    'weight_id' => 'Weight Type',
+    'weight' => 'Weight',
 ];

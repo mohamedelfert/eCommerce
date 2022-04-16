@@ -187,4 +187,8 @@ return [
     'dropzoneRemoveFile' => 'حذف الملف',
     'product_photo' => 'الصورة الرئيسية',
     'product_photos' => 'الصور الفرعية & الوسائط الاخري',
+    'size_id' => 'نوع القياس',
+    'size' => 'القياس',
+    'weight_id' => 'نوع الوزن',
+    'weight' => 'الوزن',
 ];

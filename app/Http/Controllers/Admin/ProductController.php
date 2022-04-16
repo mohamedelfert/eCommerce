@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\DataTables\ProductDatatable;
 use App\Http\Controllers\Controller;
 use App\Models\Product;
+use App\Models\Size;
+use App\Models\Weight;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Storage;
@@ -32,6 +34,7 @@ class ProductController extends Controller
             'title' => '',
             'description' => '',
             'photo' => '',
+            'size' => '',
             'weight' => '',
         ]);
         if (!empty($product)) {
@@ -186,6 +189,16 @@ class ProductController extends Controller
     {
         if (request()->has('id')) {
             upload_file()->delete($request->id);
+        }
+    }
+
+    public function prepare_size_weight()
+    {
+        if (request()->ajax() and request()->has('dep_id')) {
+            $sizes = Size::where('department_id', request('dep_id'))->pluck('name_' . session('lang'), 'id');
+//            $sizes = Size::pluck('name_' . session('lang'), 'id');
+            $weights = Weight::pluck('name_' . session('lang'), 'id');
+            return view('admin.products.ajax.size_weight', compact('sizes', 'weights'))->render();
         }
     }
 }

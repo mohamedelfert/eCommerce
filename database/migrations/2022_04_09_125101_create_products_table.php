@@ -31,6 +31,7 @@ class CreateProductsTable extends Migration
             $table->integer('color_id')->unsigned()->nullable();
             $table->foreign('color_id')->references('id')->on('colors')->onDelete('cascade');
 
+            $table->string('size');
             $table->integer('size_id')->unsigned()->nullable();
             $table->foreign('size_id')->references('id')->on('sizes')->onDelete('cascade');
 
