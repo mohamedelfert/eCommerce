@@ -195,8 +195,17 @@ class ProductController extends Controller
     public function prepare_size_weight()
     {
         if (request()->ajax() and request()->has('dep_id')) {
-            $sizes = Size::where('department_id', request('dep_id'))->pluck('name_' . session('lang'), 'id');
-//            $sizes = Size::pluck('name_' . session('lang'), 'id');
+            $sizes = Size::whereIn('department_id', explode(',', get_parent_department(request('dep_id'))))
+                ->pluck('name_' . session('lang'), 'id');
+
+//            $department_list = array_diff(explode(',', get_parent_department(request('dep_id'))), [request('dep_id')]);
+//            $size_1 = Size::where('is_public', 'yes')
+//                ->whereIn('department_id', $department_list)
+//                ->pluck('name_' . session('lang'), 'id');
+//            $size_2 = Size::where('department_id', request('dep_id'))
+//                ->pluck('name_' . session('lang'), 'id');
+//            $sizes = array_merge(json_decode($size_1, true), json_decode($size_2, true));
+
             $weights = Weight::pluck('name_' . session('lang'), 'id');
             return view('admin.products.ajax.size_weight', compact('sizes', 'weights'))->render();
         }

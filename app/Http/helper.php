@@ -50,7 +50,7 @@ if (!function_exists('lang')) {
         if (session()->has('lang')) {
             return session('lang');
         } else {
-            session()->put('lang',setting()->main_lang);
+            session()->put('lang', setting()->main_lang);
             return setting()->main_lang;
         }
     }
@@ -113,7 +113,7 @@ if (!function_exists('validate_image')) {
 }
 
 if (!function_exists('load_department')) {
-    function load_department($select = null,$option = null)
+    function load_department($select = null, $option = null)
     {
         $departments = Department::selectRaw('department_name_' . session('lang') . ' as text')
             ->selectRaw('id as id')
@@ -148,5 +148,17 @@ if (!function_exists('load_department')) {
             array_push($department_array, $list_array);
         }
         return json_encode($department_array, JSON_UNESCAPED_UNICODE);
+    }
+}
+
+if (!function_exists('get_parent_department')) {
+    function get_parent_department($dep_id)
+    {
+        $department = Department::find($dep_id);
+        if ($department->parent !== null and $department->parent > 0) {
+            return get_parent_department($department->parent) . ',' . $dep_id;
+        }else{
+            return $dep_id;
+        }
     }
 }
