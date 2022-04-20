@@ -32,6 +32,7 @@
                 data: {_token: '{{ csrf_token() }}',dep_id:department_id},
                 success:function(data){
                     $('#size_weight').html(data);
+                    $('.info_data').removeClass('d-none');
                 }
             });
         });

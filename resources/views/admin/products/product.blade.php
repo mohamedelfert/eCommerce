@@ -18,8 +18,12 @@
         <script type="text/javascript"
                 src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/min/dropzone.min.js"></script>
         <script type="text/javascript">
-            $(".js-example-placeholder-multiple").select2({
-                placeholder: "Select Status"
+            $(document).ready(function() {
+                $('.js-example-basic-multiple').select2({
+                    placeholder: 'Select Mall',
+                    theme: "classic",
+                    allowClear: true
+                });
             });
 
             // for datepicker
@@ -204,10 +208,10 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" id="product_size_weight-tab" data-toggle="pill"
-                           href="#product_size_weight" role="tab" aria-controls="product_size_weight"
-                           aria-selected="false">{{ trans('admin.product_size_weight') }} <i
-                                class="fas fa-pound-sign"></i> </a>
+                        <a class="nav-link" id="product_shipping_information-tab" data-toggle="pill"
+                           href="#product_shipping_information" role="tab" aria-controls="product_shipping_information"
+                           aria-selected="false">{{ trans('admin.product_shipping_information') }} <i
+                                class="fas fa-shipping-fast"></i> </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" id="product_other_data-tab" data-toggle="pill"
@@ -223,7 +227,7 @@
                     @include('admin.products.tabs.department')
                     @include('admin.products.tabs.product_settings')
                     @include('admin.products.tabs.product_media')
-                    @include('admin.products.tabs.product_size_weight')
+                    @include('admin.products.tabs.product_shipping_information')
                     @include('admin.products.tabs.product_other_data')
 
                 </div>
