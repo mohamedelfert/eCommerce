@@ -196,4 +196,6 @@ return [
     'weight' => 'الوزن',
     'select_weight' => 'اختر الوزن',
     'select_department_message' => 'برجاء اختيار قسم اولا',
+    'input_key' => 'عنوان الحقل',
+    'input_value' => 'محتوي الحقل',
 ];

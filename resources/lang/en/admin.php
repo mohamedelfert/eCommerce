@@ -199,4 +199,6 @@ return [
     'weight' => 'Weight',
     'select_weight' => 'Select Weight',
     'select_department_message' => 'Please Select Department First',
+    'input_key' => 'Input Title',
+    'input_value' => 'Input Value',
 ];
