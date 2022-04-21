@@ -198,4 +198,5 @@ return [
     'select_department_message' => 'برجاء اختيار قسم اولا',
     'input_key' => 'عنوان الحقل',
     'input_value' => 'محتوي الحقل',
+    'select_mall' => 'اختر مول',
 ];

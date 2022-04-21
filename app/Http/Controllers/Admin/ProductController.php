@@ -50,22 +50,7 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        $rules = [
-            'title' => 'required',
-            'description' => 'required',
-        ];
-        $validate_msg_ar = [
-            'title.required' => trans('admin_validation.title_required'),
-            'description.required' => trans('admin_validation.description_required'),
-        ];
-        $data = $this->validate($request, $rules, $validate_msg_ar);
-
-        $data['title'] = $request->title;
-        $data['description'] = $request->description;
-
-        Product::create($data);
-        toastr()->success(trans('admin_validation.success'));
-        return redirect()->back();
+        //
     }
 
     /**
@@ -103,23 +88,73 @@ class ProductController extends Controller
     public function update(Request $request, $id)
     {
         $rules = [
-            'title' => 'required|unique:products,title,' . $id,
-            'description' => 'required|unique:products,description,' . $id,
-
+            'title' => 'required',
+            'description' => 'required',
+            'department_id' => 'required|numeric',
+            'trade_mark_id' => 'required|numeric',
+            'manufacture_id' => 'required|numeric',
+            'color_id' => 'sometimes|nullable|numeric',
+            'size' => 'required',
+            'size_id' => 'sometimes|nullable|numeric',
+            'weight' => 'required',
+            'weight_id' => 'sometimes|nullable|numeric',
+            'currency_id' => 'sometimes|nullable|numeric',
+            'price' => 'required|numeric',
+            'stock' => 'required|numeric',
+            'start_at' => 'required|date',
+            'end_at' => 'required|date',
+            'offer_price' => 'sometimes|nullable|numeric',
+            'offer_start_at' => 'sometimes|nullable|date',
+            'offer_end_at' => 'sometimes|nullable|date',
+            'reason' => 'sometimes|nullable',
+            'status' => 'sometimes|nullable|in:pending,active,refused',
         ];
         $validate_msg_ar = [
-            'title.required' => trans('admin_validation.title_required'),
-            'description.required' => trans('admin_validation.description_required'),
+            'title' => trans('admin.title'),
+            'description' => trans('admin.description'),
+            'department_id' => trans('admin.department_id'),
+            'trade_mark_id' => trans('admin.trade_mark_id'),
+            'manufacture_id' => trans('admin.manufacture_id'),
+            'color_id' => trans('admin.color_id'),
+            'size' => trans('admin.size'),
+            'size_id' => trans('admin.size_id'),
+            'weight' => trans('admin.weight'),
+            'weight_id' => trans('admin.weight_id'),
+            'currency_id' => trans('admin.currency_id'),
+            'price' => trans('admin.price'),
+            'stock' => trans('admin.stock'),
+            'start_at' => trans('admin.start_at'),
+            'end_at' => trans('admin.end_at'),
+            'offer_price' => trans('admin.offer_price'),
+            'offer_start_at' => trans('admin.offer_start_at'),
+            'offer_end_at' => trans('admin.offer_end_at'),
+            'reason' => trans('admin.reason'),
+            'status' => trans('admin.status'),
         ];
         $data = $this->validate($request, $rules, $validate_msg_ar);
 
-        $product = Product::findOrFail($id);
         $data['title'] = $request->title;
         $data['description'] = $request->description;
+        $data['department_id'] = $request->department_id;
+        $data['price'] = $request->price;
+        $data['stock'] = $request->stock;
+        $data['start_at'] = $request->start_at;
+        $data['end_at'] = $request->end_at;
+        $data['offer_price'] = $request->offer_price;
+        $data['offer_start_at'] = $request->offer_start_at;
+        $data['offer_end_at'] = $request->offer_end_at;
+        $data['status'] = $request->status;
+        $data['reason'] = $request->reason;
+        $data['color_id'] = $request->color_id;
+        $data['trade_mark_id'] = $request->trade_mark_id;
+        $data['manufacture_id'] = $request->manufacture_id;
+        $data['size_id'] = $request->size_id;
+        $data['size'] = $request->size;
+        $data['weight_id'] = $request->weight_id;
+        $data['weight'] = $request->weight;
 
-        $product->update($data);
-        toastr()->success(trans('admin_validation.update'));
-        return redirect(adminUrl('products'));
+        Product::where('id', $id)->update($data);
+        return response(['status' => true, 'message' => trans('admin_validation.update'), 200]);
     }
 
     /**
@@ -148,6 +183,7 @@ class ProductController extends Controller
         return redirect()->back();
     }
 
+    /********************** this for photos upload & delete **********************/
     public function upload_main_photo($id)
     {
         $product = Product::find($id);
@@ -191,6 +227,8 @@ class ProductController extends Controller
             upload_file()->delete($request->id);
         }
     }
+
+    /********************** this for photos upload & delete **********************/
 
     public function prepare_size_weight()
     {

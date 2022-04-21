@@ -5,7 +5,7 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css"/>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/min/dropzone.min.css"/>
         <style>
-            .dz-image img{
+            .dz-image img {
                 width: 100%;
                 height: 100%;
                 border-radius: 50%;
@@ -18,9 +18,10 @@
         <script type="text/javascript"
                 src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/min/dropzone.min.js"></script>
         <script type="text/javascript">
-            $(document).ready(function() {
+            // for select with class (js-example-basic-multiple)
+            $(document).ready(function () {
                 $('.js-example-basic-multiple').select2({
-                    placeholder: 'Select Mall',
+                    placeholder: '{{ trans('admin.select_mall') }}',
                     theme: "classic",
                     allowClear: true
                 });
@@ -89,7 +90,7 @@
                         this.emit('complete', mockFile);
                         @endforeach
 
-                        this.on('sending', function (file, xhr, formData) {
+                            this.on('sending', function (file, xhr, formData) {
                             formData.append('fid', '');
                             file.fid = '';
                         });
@@ -128,18 +129,18 @@
                     },
                     init: function () {
                         @if(!empty($product->photo))
-                            var mockFile = {
-                                name: '{{ $product->title }}',
-                                size: '',
-                                type: '',
-                            };
-                            // this.emit('addedfile', mockFile); OR
-                            this.options.addedfile.call(this, mockFile);
-                            this.options.thumbnail.call(this, mockFile, '{{ url('storage/'. $product->photo) }}');
-                            this.emit('complete', mockFile);
+                        var mockFile = {
+                            name: '{{ $product->title }}',
+                            size: '',
+                            type: '',
+                        };
+                        // this.emit('addedfile', mockFile); OR
+                        this.options.addedfile.call(this, mockFile);
+                        this.options.thumbnail.call(this, mockFile, '{{ url('storage/'. $product->photo) }}');
+                        this.emit('complete', mockFile);
                         @endif
 
-                        this.on('sending', function (file, xhr, formData) {
+                            this.on('sending', function (file, xhr, formData) {
                             formData.append('fid', '');
                             file.fid = '';
                         });
@@ -147,6 +148,35 @@
                         this.on('success', function (file, response) {
                             file.fid = response.id;
                         });
+                    }
+                });
+            });
+
+            // for saving and continue button
+            $(document).on('click', '.save_continue', function () {
+                var data_form = $('#product_form').serialize();
+                $.ajax({
+                    url: '{{ adminUrl('products/'.$product->id) }}',
+                    dataType: 'json',
+                    data: data_form,
+                    type: 'POST',
+                    beforeSend: function () {
+                        $('.loading_save_continue').removeClass('d-none');
+                        $('.validate_messages').html('');
+                        $('.errors_messages').addClass('d-none');
+                    },
+                    success: function () {
+                        $('.loading_save_continue').addClass('d-none');
+                        toastr.success('{{ trans('admin_validation.update') }}');
+                    },
+                    error: function (response) {
+                        $('.loading_save_continue').addClass('d-none');
+                        var errors_list = '';
+                        $.each(response.responseJSON.errors, function (key, value) {
+                            errors_list += '<li>' + value + '</li>'
+                        });
+                        $('.validate_messages').html(errors_list);
+                        $('.errors_messages').removeClass('d-none');
                     }
                 });
             });
@@ -165,20 +195,26 @@
         </div>
         <!-- /.card-header -->
         <div class="card-body">
-            {!! Form::open(['route'=>'products.store','files'=>true,'class'=>'form-horizontal']) !!}
+            {!! Form::open(['url'=>adminUrl('products'),'method'=>'PUT','files'=>true,'class'=>'form-horizontal' ,
+            'id'=>'product_form']) !!}
+
+            <div class="alert alert-danger errors_messages d-none">
+                <ul class="validate_messages"></ul>
+            </div>
 
             <div>
                 <div style="margin-bottom: 15px;">
-                    <a type="button" class="btn btn-info" href="#">
+                    <a type="button" class="btn btn-info save" href="#">
                         <i class="fas fa-sd-card"> {{ trans('admin.save') }} </i>
                     </a>
-                    <a type="button" class="btn btn-success" href="#">
+                    <a type="button" class="btn btn-success save_continue" href="#">
                         <i class="fa fa-save"> {{ trans('admin.save_continue') }} </i>
+                        <i class="fa fa-spinner fa-spin d-none loading_save_continue"></i>
                     </a>
-                    <a type="button" class="btn btn-secondary" href="#">
+                    <a type="button" class="btn btn-secondary product_copy" href="#">
                         <i class="fa fa-copy"> {{ trans('admin.product_copy') }} </i>
                     </a>
-                    <a type="button" class="btn btn-danger" href="#">
+                    <a type="button" class="btn btn-danger delete" href="#">
                         <i class="fa fa-trash"> {{ trans('admin.delete') }} </i>
                     </a>
                 </div>
@@ -235,16 +271,17 @@
                 <hr>
 
                 <div style="margin-bottom: 15px;">
-                    <a type="button" class="btn btn-info" href="#">
+                    <a type="button" class="btn btn-info save" href="#">
                         <i class="fas fa-sd-card"> {{ trans('admin.save') }} </i>
                     </a>
-                    <a type="button" class="btn btn-success" href="#">
+                    <a type="button" class="btn btn-success save_continue" href="#">
                         <i class="fa fa-save"> {{ trans('admin.save_continue') }} </i>
+                        <i class="fa fa-spinner fa-spin d-none loading_save_continue"></i>
                     </a>
-                    <a type="button" class="btn btn-secondary" href="#">
+                    <a type="button" class="btn btn-secondary product_copy" href="#">
                         <i class="fa fa-copy"> {{ trans('admin.product_copy') }} </i>
                     </a>
-                    <a type="button" class="btn btn-danger" href="#">
+                    <a type="button" class="btn btn-danger delete" href="#">
                         <i class="fa fa-trash"> {{ trans('admin.delete') }} </i>
                     </a>
                 </div>

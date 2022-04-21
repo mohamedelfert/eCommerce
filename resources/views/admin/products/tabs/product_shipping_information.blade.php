@@ -10,22 +10,23 @@
                 {!! Form::label('color_id',trans('admin.color'),['class'=>'col-sm-6 col-form-label']) !!}
                 <div class="col-sm-10">
                     {!! Form::select('color_id',App\Models\Color::pluck('name_'.session('lang'),'id'),$product->color_id,
-                        ['class'=>'custom-select rounded-0','id'=>'color_id','placeholder'=>trans('admin.color')]) !!}
+                    ['class'=>'custom-select rounded-0','id'=>'color_id','placeholder'=>trans('admin.color')]) !!}
                 </div>
             </div>
             <div class="col">
                 {!! Form::label('trade_mark_id',trans('admin.trade_mark'),['class'=>'col-sm-6 col-form-label']) !!}
                 <div class="col-sm-10">
-                    {!! Form::select('trade_mark_id',App\Models\TradeMark::pluck('name_'.session('lang'),'id'),$product->trade_mark_id,
-                        ['class'=>'custom-select rounded-0','id'=>'trade_mark_id','placeholder'=>trans('admin.trade_mark')]) !!}
+                    {!! Form::select('trade_mark_id',App\Models\TradeMark::pluck('name_'.session('lang'),'id'),
+                    $product->trade_mark_id,['class'=>'custom-select rounded-0','id'=>'trade_mark_id',
+                    'placeholder'=>trans('admin.trade_mark')]) !!}
                 </div>
             </div>
             <div class="col">
                 {!! Form::label('manufacture_id',trans('admin.manufacture'),['class'=>'col-sm-6 col-form-label']) !!}
                 <div class="col-sm-10">
                     {!! Form::select('manufacture_id',App\Models\Manufacturer::pluck('name_'.session('lang'),'id'),
-                    $product->manufacture_id,
-                    ['class'=>'custom-select rounded-0','id'=>'manufacture_id','placeholder'=>trans('admin.manufacture')]) !!}
+                    $product->manufacture_id,['class'=>'custom-select rounded-0','id'=>'manufacture_id',
+                    'placeholder'=>trans('admin.manufacture')]) !!}
                 </div>
             </div>
         </div>

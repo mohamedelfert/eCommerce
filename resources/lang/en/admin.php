@@ -201,4 +201,5 @@ return [
     'select_department_message' => 'Please Select Department First',
     'input_key' => 'Input Title',
     'input_value' => 'Input Value',
+    'select_mall' => 'Select Mall',
 ];
