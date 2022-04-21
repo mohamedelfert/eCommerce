@@ -245,7 +245,10 @@ class ProductController extends Controller
 //            $sizes = array_merge(json_decode($size_1, true), json_decode($size_2, true));
 
             $weights = Weight::pluck('name_' . session('lang'), 'id');
-            return view('admin.products.ajax.size_weight', compact('sizes', 'weights'))->render();
+            $product = Product::find(request('product_id'));
+            return view('admin.products.ajax.size_weight',
+                compact('sizes', 'weights', 'product'))
+                ->render();
         }
     }
 }
