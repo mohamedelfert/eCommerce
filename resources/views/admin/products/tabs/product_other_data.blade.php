@@ -39,13 +39,13 @@
                 <div class="col">
                     {!! Form::label('input_key',trans('admin.input_key'),['class'=>'col-sm-6 col-form-label']) !!}
                     <div class="col-sm-10">
-                        {!! Form::text('input_key[]','',['class'=>'form-control']) !!}
+                        {!! Form::text('input_key[]',$product->other_data,['class'=>'form-control']) !!}
                     </div>
                 </div>
                 <div class="col">
                     {!! Form::label('input_value',trans('admin.input_value'),['class'=>'col-sm-6 col-form-label']) !!}
                     <div class="col-sm-10">
-                        {!! Form::text('input_value[]','',['class'=>'form-control']) !!}
+                        {!! Form::text('input_value[]',$product->other_data,['class'=>'form-control']) !!}
                     </div>
                 </div>
                 <a href="#" class="btn btn-danger remove_input" style="margin-top: 35px;">

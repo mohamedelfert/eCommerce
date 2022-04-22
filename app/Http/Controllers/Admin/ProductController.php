@@ -153,6 +153,16 @@ class ProductController extends Controller
         $data['weight_id'] = $request->weight_id;
         $data['weight'] = $request->weight;
 
+        if ($request->has('input_key') and $request->has('input_value')) {
+            $i = 0;
+            $other_data = '';
+            foreach ($request->input_key as $key) {
+                $other_data .= $key . ',' . $request->input_value[$i] . '|';
+                $i++;
+            }
+            $data['other_data'] = rtrim($other_data, '|');
+        }
+
         Product::where('id', $id)->update($data);
         return response(['status' => true, 'message' => trans('admin_validation.update'), 200]);
     }

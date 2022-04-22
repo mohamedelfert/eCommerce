@@ -66,7 +66,7 @@
             <div class="col-sm-10">
                 {!! Form::select('status',
                 ['pending'=>trans('admin.pending'),'refused'=>trans('admin.refused'), 'active'=>trans('admin.active')],
-                old('status'),['class'=>'custom-select rounded-0 status',
+                $product->status,['class'=>'custom-select rounded-0 status',
                 'id'=>'status']) !!}
             </div>
         </div>
