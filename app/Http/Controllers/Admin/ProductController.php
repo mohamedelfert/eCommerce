@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\DataTables\ProductDatatable;
 use App\Http\Controllers\Controller;
 use App\Models\Product;
+use App\Models\ProductOtherData;
 use App\Models\Size;
 use App\Models\Weight;
 use Illuminate\Http\Request;
@@ -155,12 +156,18 @@ class ProductController extends Controller
 
         if ($request->has('input_key') and $request->has('input_value')) {
             $i = 0;
-            $other_data = '';
+//            $other_data = '';
+            ProductOtherData::where('product_id', $id)->delete();
             foreach ($request->input_key as $key) {
-                $other_data .= $key . ',' . $request->input_value[$i] . '|';
+                ProductOtherData::create([
+                    'data_key' => $key,
+                    'data_value' => $request->input_value[$i],
+                    'product_id' => $id,
+                ]);
+//                $other_data .= $key . ',' . $request->input_value[$i] . '|';
                 $i++;
             }
-            $data['other_data'] = rtrim($other_data, '|');
+//            $data['other_data'] = rtrim($other_data, '|');
         }
 
         Product::where('id', $id)->update($data);

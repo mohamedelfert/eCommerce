@@ -14,6 +14,11 @@ class Product extends Model
 
     public function files()
     {
-        return $this->hasMany(File::class,'relation_id','id')->where('file_type','product');
+        return $this->hasMany(File::class, 'relation_id', 'id')->where('file_type', 'product');
+    }
+
+    public function others_data()
+    {
+        return $this->hasMany(ProductOtherData::class, 'product_id', 'id');
     }
 }

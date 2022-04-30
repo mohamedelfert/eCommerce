@@ -52,7 +52,6 @@ class CreateProductsTable extends Migration
             $table->date('offer_start_at')->nullable();
             $table->date('offer_end_at')->nullable();
 
-            $table->longText('other_data')->nullable();
             $table->longText('reason')->nullable();
             $table->enum('status',['pending','refused','active'])->default('pending');
 
