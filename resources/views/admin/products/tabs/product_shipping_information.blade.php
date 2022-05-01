@@ -35,13 +35,15 @@
             <div class="col-sm-12">
                 <select class="js-example-basic-multiple" id="malls" style="width: 100%" name="malls[]"
                         multiple="multiple">
-                    @foreach(App\Models\Country::all() as $country)
-                        <optgroup label="{{ $country->{'country_name_' . session('lang')} }}">
-                            @foreach($country->malls()->get() as $mall)
-                                <option value="{{ $mall->id }}">{{ $mall->{'name_' . session('lang')} }}</option>
-                            @endforeach
-                        </optgroup>
-                    @endforeach
+{{--                    @foreach(App\Models\Country::all() as $country)--}}
+{{--                        <optgroup label="{{ $country->{'country_name_' . session('lang')} }}">--}}
+{{--                            @foreach($country->malls()->get() as $mall)--}}
+{{--                                <option value="{{ $mall->id }}">--}}
+{{--                                    {{ $mall->{'name_' . session('lang')} }}--}}
+{{--                                </option>--}}
+{{--                            @endforeach--}}
+{{--                        </optgroup>--}}
+{{--                    @endforeach--}}
                 </select>
             </div>
         </div>

@@ -20,7 +20,24 @@
         <script type="text/javascript">
             // for select with class (js-example-basic-multiple)
             $(document).ready(function () {
+                var dataSelect = [
+                    @foreach(App\Models\Country::all() as $country)
+                    {
+                        "text": "{{ $country->{'country_name_' . session('lang')} }}",
+                        "children": [
+                            @foreach($country->malls()->get() as $mall)
+                            {
+                                "id": {{ $mall->id }},
+                                "text": "{{ $mall->{'name_' . session('lang')} }}",
+                                "selected": "{{ check_mall_exists($product->id,$mall->id) }}"
+                            },
+                            @endforeach
+                        ],
+                    },
+                    @endforeach
+                ];
                 $('.js-example-basic-multiple').select2({
+                    data: dataSelect,
                     placeholder: '{{ trans('admin.select_mall') }}',
                     theme: "classic",
                     allowClear: true

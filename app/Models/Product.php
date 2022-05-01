@@ -21,4 +21,9 @@ class Product extends Model
     {
         return $this->hasMany(ProductOtherData::class, 'product_id', 'id');
     }
+
+    public function malls()
+    {
+        return $this->hasMany(MallProduct::class, 'product_id', 'id');
+    }
 }

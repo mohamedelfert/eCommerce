@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\UploadController;
 use App\Models\Department;
+use App\Models\MallProduct;
 use App\Models\Settings;
 use Illuminate\Support\Facades\Request;
 
@@ -30,6 +31,13 @@ if (!function_exists('upload_file')) {
     function upload_file()
     {
         return new UploadController;
+    }
+}
+
+if (!function_exists('check_mall_exists')) {
+    function check_mall_exists($product_id, $mall_id)
+    {
+        return MallProduct::where('product_id', $product_id)->where('mall_id', $mall_id)->count() > 0 ? true : false;
     }
 }
 
@@ -157,7 +165,7 @@ if (!function_exists('get_parent_department')) {
         $department = Department::find($dep_id);
         if ($department->parent !== null and $department->parent > 0) {
             return get_parent_department($department->parent) . ',' . $dep_id;
-        }else{
+        } else {
             return $dep_id;
         }
     }

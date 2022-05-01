@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\DataTables\ProductDatatable;
 use App\Http\Controllers\Controller;
+use App\Models\MallProduct;
 use App\Models\Product;
 use App\Models\ProductOtherData;
 use App\Models\Size;
@@ -144,8 +145,15 @@ class ProductController extends Controller
         $data['offer_price'] = $request->offer_price;
         $data['offer_start_at'] = $request->offer_start_at;
         $data['offer_end_at'] = $request->offer_end_at;
-        $data['status'] = $request->status;
-        $data['reason'] = $request->reason;
+
+        if ($request->status === 'active' || $request->status === 'pending') {
+            $data['status'] = $request->status;
+            $data['reason'] = '';
+        } else {
+            $data['status'] = $request->status;
+            $data['reason'] = $request->reason;
+        }
+
         $data['color_id'] = $request->color_id;
         $data['trade_mark_id'] = $request->trade_mark_id;
         $data['manufacture_id'] = $request->manufacture_id;
@@ -153,6 +161,16 @@ class ProductController extends Controller
         $data['size'] = $request->size;
         $data['weight_id'] = $request->weight_id;
         $data['weight'] = $request->weight;
+
+        if ($request->has('malls')) {
+            MallProduct::where('product_id', $id)->delete();
+            foreach ($request->malls as $mall) {
+                MallProduct::create([
+                    'product_id' => $id,
+                    'mall_id' => $mall,
+                ]);
+            }
+        }
 
         if ($request->has('input_key') and $request->has('input_value')) {
             $i = 0;
