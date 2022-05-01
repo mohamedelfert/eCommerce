@@ -200,19 +200,27 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        Product::findOrFail($id)->delete();
+        $this->deleteProduct($id);
         toastr()->error(trans('admin_validation.delete'));
-        return redirect()->back();
+        return redirect(adminUrl('products'));
+    }
+
+    public function deleteProduct($id)
+    {
+        $product = Product::findOrFail($id);
+        Storage::delete($product->photo);
+        upload_file()->deleteFiles($id);
+        $product->delete();
     }
 
     public function delete_all(Request $request)
     {
         if (is_array($request->box)) {
             foreach ($request->box as $id) {
-                Product::find($id)->delete();
+                $this->deleteProduct($id);
             }
         } else {
-            Product::find($request->box)->delete();
+            $this->deleteProduct($request->box);
         }
         toastr()->error(trans('admin_validation.delete'));
         return redirect()->back();

@@ -15,7 +15,7 @@
             <div class="modal-body">
                 <h4 class="text-danger">{{ trans('admin.delete_message') }}</h4><br>
                 <div class="form-group row">
-                    {!! Form::label('title',trans('admin.title'),['class'=>'col-sm-5 col-form-label']) !!}
+                    {!! Form::label('title',trans('admin.product_title'),['class'=>'col-sm-5 col-form-label']) !!}
                     <div class="col-sm-6">
                         {!! Form::text('title',$title,['class'=>'form-control','id'=>'title','readonly']) !!}
                     </div>
