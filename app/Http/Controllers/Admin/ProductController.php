@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Models\MallProduct;
 use App\Models\Product;
 use App\Models\ProductOtherData;
+use App\Models\ProductRelated;
 use App\Models\Size;
 use App\Models\Weight;
 use Illuminate\Http\Request;
@@ -164,6 +165,7 @@ class ProductController extends Controller
         $data['weight_id'] = $request->weight_id;
         $data['weight'] = $request->weight;
 
+        // for malls
         if ($request->has('malls')) {
             MallProduct::where('product_id', $id)->delete();
             foreach ($request->malls as $mall) {
@@ -174,6 +176,7 @@ class ProductController extends Controller
             }
         }
 
+        // for other_data
         if ($request->has('input_key') and $request->has('input_value')) {
             $i = 0;
 //            $other_data = '';
@@ -190,8 +193,19 @@ class ProductController extends Controller
 //            $data['other_data'] = rtrim($other_data, '|');
         }
 
+        // for related product
+        if ($request->has('related')) {
+            ProductRelated::where('product_id', $id)->delete();
+            foreach ($request->related as $related) {
+                ProductRelated::create([
+                    'product_id' => $id,
+                    'related_product' => $related,
+                ]);
+            }
+        }
+
         Product::where('id', $id)->update($data);
-        return response(['status' => true, 'message' => trans('admin_validation.update'), 200]);
+        return response(['status' => true, 'message' => trans('admin_validation.update')], 200);
     }
 
     /**
@@ -377,9 +391,35 @@ class ProductController extends Controller
                     ]);
                 }
             }
-            return response(['status' => true, 'message' => trans('admin_validation.success'), 'id' => $product->id, 200]);
+            return response([
+                'status' => true,
+                'message' => trans('admin_validation.success'),
+                'id' => $product->id
+            ], 200);
         }
     }
+
     /********************** this for copy product **********************/
+
+    public function product_search(Request $request)
+    {
+        if ($request->ajax()) {
+            if (!empty($request->search) && $request->has('search')) {
+                $related_products = ProductRelated::where('product_id', $request->product_id)->get(['related_product']);
+                $products = Product::where('title', 'LIKE', '%' . $request->search . '%')
+                    ->where('id', '!=', $request->product_id)
+                    ->whereNotIn('id', $related_products)
+                    ->limit(10)
+                    ->orderBy('id', 'DESC')
+                    ->get(); // or
+//                $products = Product::where('title', 'LIKE', '%' . $request->search . '%')->limit(10)->get();
+                return response([
+                    'status' => true,
+                    'results' => count($products) > 0 ? $products : '',
+                    'total' => count($products),
+                ], 200);
+            }
+        }
+    }
 
 }

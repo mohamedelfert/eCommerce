@@ -202,4 +202,5 @@ return [
     'input_key' => 'Input Title',
     'input_value' => 'Input Value',
     'select_mall' => 'Select Mall',
+    'related_product' => 'Related Product',
 ];

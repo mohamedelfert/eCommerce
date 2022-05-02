@@ -225,7 +225,7 @@
                         $('.loading_copy').addClass('d-none');
                         var errors_list = '';
                         $.each(response.responseJSON.errors, function (key, value) {
-                            errors_list += '<li>' + value + '</li>'
+                            errors_list += '<li>' + value + '</li>';
                         });
                         $('.validate_messages').html(errors_list);
                         $('.errors_messages').removeClass('d-none');
@@ -309,6 +309,12 @@
                            aria-selected="false">{{ trans('admin.product_other_data') }} <i class="fas fa-database"></i>
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="related_product-tab" data-toggle="pill"
+                           href="#related_product" role="tab" aria-controls="related_product"
+                           aria-selected="false">{{ trans('admin.related_product') }} <i class="fas fa-list"></i>
+                        </a>
+                    </li>
                 </ul>
 
                 <div class="tab-content" id="custom-content-above-tabContent">
@@ -319,6 +325,7 @@
                     @include('admin.products.tabs.product_media')
                     @include('admin.products.tabs.product_shipping_information')
                     @include('admin.products.tabs.product_other_data')
+                    @include('admin.products.tabs.related_product')
 
                 </div>
 
