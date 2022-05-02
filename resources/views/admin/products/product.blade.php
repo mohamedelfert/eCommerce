@@ -21,11 +21,11 @@
             // for select with class (js-example-basic-multiple)
             $(document).ready(function () {
                 var dataSelect = [
-                    @foreach(App\Models\Country::all() as $country)
+                        @foreach(App\Models\Country::all() as $country)
                     {
                         "text": "{{ $country->{'country_name_' . session('lang')} }}",
                         "children": [
-                            @foreach($country->malls()->get() as $mall)
+                                @foreach($country->malls()->get() as $mall)
                             {
                                 "id": {{ $mall->id }},
                                 "text": "{{ $mall->{'name_' . session('lang')} }}",
@@ -182,12 +182,47 @@
                         $('.validate_messages').html('');
                         $('.errors_messages').addClass('d-none');
                     },
-                    success: function () {
-                        $('.loading_save_continue').addClass('d-none');
-                        toastr.success('{{ trans('admin_validation.update') }}');
+                    success: function (data) {
+                        if (data.status == true) {
+                            $('.loading_save_continue').addClass('d-none');
+                            toastr.success('{{ trans('admin_validation.update') }}');
+                        }
                     },
                     error: function (response) {
                         $('.loading_save_continue').addClass('d-none');
+                        var errors_list = '';
+                        $.each(response.responseJSON.errors, function (key, value) {
+                            errors_list += '<li>' + value + '</li>'
+                        });
+                        $('.validate_messages').html(errors_list);
+                        $('.errors_messages').removeClass('d-none');
+                    }
+                });
+            });
+
+            // for copy product
+            $(document).on('click', '.product_copy', function () {
+                $.ajax({
+                    url: '{{ adminUrl('products/copy/'.$product->id) }}',
+                    dataType: 'json',
+                    data: {_token: '{{ csrf_token() }}'},
+                    type: 'POST',
+                    beforeSend: function () {
+                        $('.loading_copy').removeClass('d-none');
+                        $('.validate_messages').html('');
+                        $('.errors_messages').addClass('d-none');
+                    },
+                    success: function (data) {
+                        if (data.status == true) {
+                            $('.loading_copy').addClass('d-none');
+                            toastr.success('{{ trans('admin_validation.success') }}');
+                            setTimeout(function () {
+                                window.location.href = '{{ adminUrl('products') }}/' + data.id + '/edit';
+                            }, 5000);
+                        }
+                    },
+                    error: function (response) {
+                        $('.loading_copy').addClass('d-none');
                         var errors_list = '';
                         $.each(response.responseJSON.errors, function (key, value) {
                             errors_list += '<li>' + value + '</li>'
@@ -230,6 +265,7 @@
                     </a>
                     <a type="button" class="btn btn-secondary product_copy" href="#">
                         <i class="fa fa-copy"> {{ trans('admin.product_copy') }} </i>
+                        <i class="fa fa-spinner fa-spin d-none loading_copy"></i>
                     </a>
                     <a type="button" class="modal-effect btn btn-danger" data-effect="effect-scale"
                        data-toggle="modal" href="#del_product{{ $product->id }}">
@@ -298,6 +334,7 @@
                     </a>
                     <a type="button" class="btn btn-secondary product_copy" href="#">
                         <i class="fa fa-copy"> {{ trans('admin.product_copy') }} </i>
+                        <i class="fa fa-spinner fa-spin d-none loading_copy"></i>
                     </a>
                     <a type="button" class="modal-effect btn btn-danger" data-effect="effect-scale"
                        data-toggle="modal" href="#del_product{{ $product->id }}">
@@ -318,7 +355,8 @@
                 {!! Form::open(['url' => adminUrl('products/'.$product->id),'method'=>'DELETE']) !!}
                 <div class="modal-header">
                     <h6 class="modal-title">{{ trans('admin.delete') }}</h6>
-                    <button aria-label="Close" class="close" data-dismiss="modal" type="button"><span aria-hidden="true">&times;</span>
+                    <button aria-label="Close" class="close" data-dismiss="modal" type="button"><span
+                            aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
@@ -331,7 +369,8 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">{{trans('admin.cancel')}}</button>
+                    <button type="button" class="btn btn-secondary"
+                            data-dismiss="modal">{{trans('admin.cancel')}}</button>
                     <button type="submit" class="btn btn-danger">{{trans('admin.delete')}}</button>
                 </div>
                 {!! Form::close() !!}

@@ -11,7 +11,9 @@ use App\Models\Size;
 use App\Models\Weight;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class ProductController extends Controller
 {
@@ -294,4 +296,90 @@ class ProductController extends Controller
                 ->render();
         }
     }
+
+    /********************** this for copy product **********************/
+    public function copy_product(Request $request, $id)
+    {
+        if ($request->ajax()) {
+            $copy = Product::find($id)->toArray();
+            unset($copy['id']);
+            $product = Product::create($copy); // or
+
+//            $product = Product::create([
+//                'title' => $copy->title,
+//                'description' => $copy->description,
+//                'photo' => $copy->photo,
+//                'department_id' => $copy->department_id,
+//                'trade_mark_id' => $copy->trade_mark_id,
+//                'manufacture_id' => $copy->manufacture_id,
+//                'color_id' => $copy->color_id,
+//                'size' => $copy->size,
+//                'size_id' => $copy->size_id,
+//                'weight' => $copy->weight,
+//                'weight_id' => $copy->weight_id,
+//                'currency_id' => $copy->currency_id,
+//                'price' => $copy->price,
+//                'stock' => $copy->stock,
+//                'start_at' => $copy->start_at,
+//                'end_at' => $copy->end_at,
+//                'offer_price' => $copy->offer_price,
+//                'offer_start_at' => $copy->offer_start_at,
+//                'offer_end_at' => $copy->offer_end_at,
+//                'reason' => $copy->reason,
+//                'status' => $copy->status,
+//            ]);
+
+            // copy malls
+            $malls = MallProduct::where('product_id', $id)->get();
+            foreach ($malls as $mall) {
+                MallProduct::create([
+                    'product_id' => $product->id,
+                    'mall_id' => $mall->mall_id,
+                ]);
+            }
+
+            // copy other data
+            $other_data = ProductOtherData::where('product_id', $id)->get();
+            foreach ($other_data as $key) {
+                ProductOtherData::create([
+                    'data_key' => $key->data_key,
+                    'data_value' => $key->data_value,
+                    'product_id' => $product->id,
+                ]);
+            }
+
+            // copy main photo
+            if (!empty($copy['photo'])) {
+                $exe = File::extension($copy['photo']);
+                $new_path = 'products/' . $product->id . '/' . Str::random(40) . '.' . $exe;
+                Storage::copy($copy['photo'], $new_path);
+                $product->photo = $new_path;
+                $product->save();
+            }
+
+            // copy files
+            $files = \App\Models\File::where('file_type', 'product')->where('relation_id', $id)->get();
+            if (count($files) > 0) {
+                foreach ($files as $file) {
+                    $hashName = Str::random(40);
+                    $exe = File::extension($file->full_path);
+                    $new_path = 'products/' . $product->id . '/' . $hashName . '.' . $exe;
+                    Storage::copy($file->full_path, $new_path);
+                    $add = \App\Models\File::create([
+                        'name' => $file->name,
+                        'size' => $file->size,
+                        'file' => $hashName,
+                        'path' => 'products/' . $product->id,
+                        'full_path' => $new_path,
+                        'mime_type' => $file->mime_type,
+                        'file_type' => 'product',
+                        'relation_id' => $product->id,
+                    ]);
+                }
+            }
+            return response(['status' => true, 'message' => trans('admin_validation.success'), 'id' => $product->id, 200]);
+        }
+    }
+    /********************** this for copy product **********************/
+
 }
