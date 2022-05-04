@@ -3,6 +3,7 @@ return [
     'users_control' => 'Users Control',
     'users_accounts' => 'Users Accounts',
     'users_list' => 'Users List',
+    'users' => 'Users',
     'new_user' => 'Add New User',
     'edit_user' => 'Edit User Information',
     'print' => 'Print',

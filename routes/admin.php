@@ -80,9 +80,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
         Route::get('setting', 'SettingsController@setting');
         Route::post('setting', 'SettingsController@setting_save');
 
-        Route::get('/', function () {
-            return view('admin.home');
-        });
+        Route::get('/', 'HomeController@index');
 
         Route::any('logout', 'AdminAuthController@logout');
     });

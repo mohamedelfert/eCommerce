@@ -200,4 +200,6 @@ return [
     'input_value' => 'محتوي الحقل',
     'select_mall' => 'اختر مول',
     'related_product' => 'المنتجات ذات الصلة',
+    'more_info' => 'المزيد',
+    'statistics' => 'الإحصائيات',
 ];

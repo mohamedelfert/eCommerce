@@ -203,4 +203,6 @@ return [
     'input_value' => 'Input Value',
     'select_mall' => 'Select Mall',
     'related_product' => 'Related Product',
+    'more_info' => 'More info',
+    'statistics' => 'Statistics',
 ];
