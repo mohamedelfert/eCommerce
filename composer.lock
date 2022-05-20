@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "32ef64c645eec5e4732d740e942aa203",
+    "content-hash": "03b22787f25a480eee657ca87675618f",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -5974,6 +5974,7 @@
                 "issues": "https://github.com/yoeunes/toastr/issues",
                 "source": "https://github.com/yoeunes/toastr"
             },
+            "abandoned": "php-flasher/flasher-toastr-laravel",
             "time": "2022-01-28T20:29:38+00:00"
         }
     ],
